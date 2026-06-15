@@ -207,21 +207,14 @@ async def process_discord_code(code: str) -> dict:
 # ─── FastAPI App ─────────────────────────────────────────────
 app = FastAPI(title="Caso Armin API", docs_url=None, redoc_url=None)
 
-# CORS — permitir GitHub Pages Y el dominio custom
-origins = []
-if GITHUB_PAGES_URL:
-    origins.append(GITHUB_PAGES_URL)
-if HOST_URL:
-    origins.append(HOST_URL)
-# Siempre permitir el dominio custom
-if "arminbaneado.com" not in origins:
-    origins.append("https://arminbaneado.com")
-
+# CORS — permitir cualquier origen (el frontend está en GitHub Pages y
+# puede cambiar de dominio). La seguridad está en Discord OAuth, no en CORS.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins if origins else ["*"],
+    allow_origins=["*"],
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["ngrok-skip-browser-warning"],
 )
 
 

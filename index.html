@@ -666,7 +666,10 @@
             // Cargar firmas dinámicas del host (puede fallar)
             var newPromise;
             if (HOST_URL) {
-                newPromise = fetch(HOST_URL + '/api/firmas', { mode: 'cors' })
+                newPromise = fetch(HOST_URL + '/api/firmas', {
+                        mode: 'cors',
+                        headers: { 'ngrok-skip-browser-warning': 'true' }
+                    })
                     .then(function(r) { return r.json(); })
                     .then(function(d) { return d.firmas || []; })
                     .catch(function() { return []; });
@@ -843,7 +846,10 @@
 
             fetch(HOST_URL + '/api/firmar', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                },
                 body: JSON.stringify({ code: code }),
                 mode: 'cors'
             })
