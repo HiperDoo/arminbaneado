@@ -303,8 +303,8 @@
         'use strict';
 
         // ── FIRMAS ──
-        var firmasCount = 24;
-        var API_URL = 'https://arminserver.alwaysdata.net';
+        var firmasCount = 0;
+        var API_URL = '';
 
         function formatShort(n){
             if(n>=1e9) return (n/1e9).toFixed(1).replace(/\.0$/,'')+'b';
@@ -320,18 +320,23 @@
             if(firmasCount>=1000){fullEl.classList.add('visible')}else{fullEl.classList.remove('visible')}
         }
 
-        // Load base count from firmas_old.json
-        fetch('./firmas_old.json').then(function(r){return r.json()}).then(function(a){if(Array.isArray(a)) firmasCount=a.length; renderCounter();}).catch(function(){renderCounter();});
-
-        // Also try loading counter from API
+        // Load counter from API (primary source of truth)
         fetch('./config.json').then(function(r){return r.json()}).then(function(d){
             if(d.api_url){
                 API_URL=d.api_url;
                 fetch(API_URL+'/api/contador',{headers:{'ngrok-skip-browser-warning':'true'}}).then(function(r){return r.json()}).then(function(data){
-                    if(data.count && data.count>firmasCount){firmasCount=data.count;renderCounter();}
+                    if(typeof data.count==='number'){firmasCount=data.count;renderCounter();}
                 }).catch(function(){});
             }
         }).catch(function(){});
+
+        // Refresh counter from API every 30 seconds
+        setInterval(function(){
+            if(!API_URL) return;
+            fetch(API_URL+'/api/contador',{headers:{'ngrok-skip-browser-warning':'true'}}).then(function(r){return r.json()}).then(function(data){
+                if(typeof data.count==='number' && data.count>firmasCount){firmasCount=data.count;renderCounter();}
+            }).catch(function(){});
+        },30000);
 
         // ── THEME ──
         var htmlEl=document.documentElement;
@@ -387,7 +392,14 @@
             var originalText=btnSubmit.textContent;
             btnSubmit.disabled=true;btnSubmit.textContent='Enviando...';
 
-            var imageData=canvas.toDataURL('image/png');
+            // Fill white background before exporting so Discord shows white, not transparent
+            var exportCanvas=document.createElement('canvas');
+            exportCanvas.width=canvas.width;exportCanvas.height=canvas.height;
+            var ectx=exportCanvas.getContext('2d');
+            ectx.fillStyle='#ffffff';
+            ectx.fillRect(0,0,exportCanvas.width,exportCanvas.height);
+            ectx.drawImage(canvas,0,0);
+            var imageData=exportCanvas.toDataURL('image/png');
 
             fetch(API_URL+'/api/firmar',{
                 method:'POST',

@@ -6,9 +6,7 @@ No guarda firmas en disco. Cola de envío con 5 segundos entre cada una.
 
 import asyncio
 import base64
-import time
 from collections import deque
-from pathlib import Path
 
 import httpx
 from fastapi import FastAPI, HTTPException
@@ -19,7 +17,6 @@ from pydantic import BaseModel
 # Lee la URL del webhook desde una variable de entorno o hardcodea aquí
 import os
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
-FIRMAS_FILE = Path(__file__).parent / "firmas.json"
 
 # ===== APP =====
 app = FastAPI(title="Armin Ban API")
@@ -33,23 +30,9 @@ app.add_middleware(
 )
 
 # ===== COUNTER =====
-# Cargar contador inicial desde firmas.json si existe, si no empieza en 0
+# El contador empieza en 0 y solo se incrementa con cada firma recibida
+# No se carga de ningún archivo — la fuente de verdad es la memoria
 counter = 0
-
-def load_counter():
-    global counter
-    if FIRMAS_FILE.exists():
-        try:
-            import json
-            with open(FIRMAS_FILE, "r") as f:
-                data = json.load(f)
-                counter = len(data) if isinstance(data, list) else 0
-        except Exception:
-            counter = 0
-    else:
-        counter = 0
-
-load_counter()
 
 # ===== WEBHOOK QUEUE =====
 webhook_queue: deque = deque()
