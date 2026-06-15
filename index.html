@@ -95,18 +95,7 @@
             width: 200px; height: 1px;
             background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
         }
-        .server-logo-area { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px; }
-        .server-logo-placeholder {
-            width: 64px; height: 64px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--bg-surface-alt), var(--bg-surface));
-            border: 2px solid var(--border-bright);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; color: var(--text-tertiary);
-            overflow: hidden; transition: all 0.3s ease;
-        }
-        .server-logo-placeholder:hover { border-color: var(--accent-red); box-shadow: 0 0 20px var(--accent-red-glow); }
-        .server-logo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-        .server-info { text-align: left; }
+        .server-info { text-align: center; margin-bottom: 24px; }
         .server-name { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
         .server-label { font-size: 0.72rem; font-weight: 600; color: var(--accent-red); letter-spacing: 0.08em; text-transform: uppercase; }
         .hero-lede { font-size: clamp(1.5rem, 4.5vw, 2.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.03em; color: var(--text-primary); }
@@ -158,19 +147,7 @@
             background: var(--bg-surface); border: 1px solid var(--border);
             border-left: 4px solid var(--accent-red); border-radius: var(--radius);
             padding: 24px; margin: 0 0 48px;
-            display: flex; gap: 20px; align-items: flex-start;
         }
-        .accused-photo {
-            width: 88px; height: 88px; border-radius: 50%;
-            background: linear-gradient(135deg, #2d1b1b, #1a0a0a);
-            border: 3px solid var(--accent-red); flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden; box-shadow: 0 0 24px var(--accent-red-glow);
-        }
-        [data-theme="light"] .accused-photo { background: linear-gradient(135deg, #fde8e8, #fbd5d5); }
-        .accused-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .accused-photo .placeholder-icon { font-size: 2.2rem; color: var(--accent-red); opacity: 0.6; }
-        .accused-info { flex: 1; }
         .accused-badge {
             display: inline-flex; align-items: center; gap: 6px;
             background: var(--accent-red-subtle); border: 1px solid rgba(248,81,73,0.3);
@@ -195,15 +172,6 @@
         .pull-quote { font-size: 1.1rem; font-weight: 700; color: var(--accent-red); border-left: 4px solid var(--accent-red); padding: 14px 18px; margin: 20px 0; background: var(--accent-red-subtle); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
         .owner-statement { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 18px 0; }
         .owner-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-        .owner-avatar {
-            width: 44px; height: 44px; border-radius: 50%;
-            background: linear-gradient(135deg, #1c2333, #2d3548);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; color: var(--accent-blue); font-size: 0.9rem;
-            flex-shrink: 0; border: 2px solid rgba(88,166,255,0.3); overflow: hidden;
-        }
-        [data-theme="light"] .owner-avatar { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1d4ed8; }
-        .owner-avatar img { width: 100%; height: 100%; object-fit: cover; }
         .owner-name { font-weight: 700; color: var(--text-primary); font-size: 0.92rem; }
         .owner-role { font-size: 0.72rem; color: var(--accent-amber); font-weight: 600; letter-spacing: 0.04em; }
 
@@ -224,79 +192,15 @@
         .evidence-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 18px 0; }
         .evidence-placeholder { background: var(--bg-surface); border: 2px dashed var(--border); border-radius: var(--radius-sm); aspect-ratio: 16/10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--text-tertiary); font-size: 0.78rem; transition: all 0.25s ease; }
         .evidence-placeholder:hover { border-color: var(--accent-red); background: var(--accent-red-subtle); }
-        .evidence-placeholder .icon { font-size: 1.6rem; opacity: 0.4; }
 
-        .emily-letter { background: linear-gradient(135deg, rgba(210,153,34,0.06), rgba(210,153,34,0.02)); border: 1px solid rgba(210,153,34,0.2); border-left: 4px solid var(--accent-amber); border-radius: var(--radius); padding: 22px; margin: 20px 0; }
-        .emily-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .emily-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-amber), #c27d18); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 0.85rem; overflow: hidden; }
-        .emily-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .emily-name { font-weight: 700; color: var(--text-primary); font-size: 0.92rem; }
-        .emily-label { font-size: 0.68rem; color: var(--accent-amber); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+        .testimonial-letter { background: linear-gradient(135deg, rgba(210,153,34,0.06), rgba(210,153,34,0.02)); border: 1px solid rgba(210,153,34,0.2); border-left: 4px solid var(--accent-amber); border-radius: var(--radius); padding: 22px; margin: 20px 0; }
+        .testimonial-header { margin-bottom: 12px; }
+        .testimonial-name { font-weight: 700; color: var(--text-primary); font-size: 0.92rem; }
+        .testimonial-label { font-size: 0.68rem; color: var(--accent-amber); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
 
         .callout-warning { background: var(--accent-red-subtle); border: 1px solid rgba(248,81,73,0.2); border-radius: var(--radius); padding: 22px; margin: 20px 0; }
         .callout-warning h3 { color: var(--accent-red); font-size: 1rem; margin-bottom: 10px; }
         .callout-warning p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 6px; }
-
-        /* ===== AUTO-SCROLLING CAROUSEL (sin flechas) ===== */
-        .sig-carousel-section {
-            overflow: hidden; margin: 0 0 16px;
-            mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-            -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-        }
-        .sig-carousel-header { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px; }
-        .sig-carousel-track {
-            display: flex; gap: 18px;
-            width: max-content;
-            animation: carousel-scroll 40s linear infinite;
-        }
-        .sig-carousel-track:hover { animation-play-state: paused; }
-        @keyframes carousel-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .sig-carousel-item {
-            flex-shrink: 0; display: flex; flex-direction: column;
-            align-items: center; width: 76px; cursor: default;
-        }
-        .sig-carousel-item img {
-            width: 48px; height: 48px; border-radius: 50%;
-            object-fit: cover; border: 2px solid var(--border);
-            transition: border-color 0.2s ease;
-        }
-        .sig-carousel-item img:hover { border-color: var(--accent-red); }
-        .sig-carousel-item .sc-name { font-size: 0.62rem; color: var(--text-tertiary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 76px; text-align: center; margin-top: 4px; }
-
-        /* ===== SIGNATURES LIST WITH HOVER TOOLTIP ===== */
-        .signatures-wrap { border-top: 1px solid var(--border); padding-top: 24px; margin: 0; }
-        .sig-list-header { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px; }
-        .signatures-list { display: flex; flex-wrap: wrap; gap: 6px; }
-
-        .sig-tag {
-            position: relative; display: inline-flex; align-items: center; gap: 3px;
-            background: var(--bg-surface); border: 1px solid var(--border);
-            padding: 5px 12px; border-radius: 100px;
-            font-size: 0.8rem; color: var(--text-secondary); font-weight: 500;
-            cursor: default; transition: all 0.2s ease;
-        }
-        .sig-tag:hover { border-color: var(--accent-red); background: var(--accent-red-subtle); }
-        .sig-tag .at { color: var(--accent-red); font-weight: 700; }
-        .sig-tag .sig-tooltip {
-            display: none; position: absolute;
-            bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-            background: var(--bg-surface); border: 1px solid var(--border-bright);
-            border-radius: var(--radius-sm); padding: 10px 14px;
-            box-shadow: var(--shadow-lg); white-space: nowrap; z-index: 50; min-width: 180px;
-        }
-        .sig-tag .sig-tooltip::after {
-            content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-            border: 6px solid transparent; border-top-color: var(--border-bright);
-        }
-        .sig-tag:hover .sig-tooltip { display: flex; align-items: center; gap: 10px; }
-        .sig-tooltip-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; }
-        .sig-tooltip-info { display: flex; flex-direction: column; }
-        .sig-tooltip-name { font-size: 0.8rem; font-weight: 700; color: var(--text-primary); }
-        .sig-tooltip-action { font-size: 0.68rem; color: var(--accent-green); font-weight: 600; }
-        .sig-tooltip-time { font-size: 0.62rem; color: var(--text-tertiary); }
 
         /* ===== VERDICT ===== */
         .verdict-card { background: linear-gradient(135deg, var(--accent-red-subtle), rgba(248,81,73,0.03)); border: 2px solid var(--accent-red); border-radius: var(--radius-lg); padding: 36px; text-align: center; margin: 24px 0; box-shadow: 0 0 40px var(--accent-red-glow); }
@@ -310,7 +214,7 @@
         .footer-community { font-weight: 700; color: var(--text-secondary); margin-bottom: 4px; }
         .footer-date { margin-top: 4px; }
 
-        /* ===== THANKS MODAL ===== */
+        /* ===== THANKS MODAL (anónimo) ===== */
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 1000;
             display: flex; align-items: center; justify-content: center;
@@ -327,10 +231,8 @@
         .modal-icon { font-size: 2.5rem; margin-bottom: 10px; }
         .modal-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
         .modal-desc { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 18px; line-height: 1.65; }
-        .modal-user-info { background: var(--bg-surface-alt); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; text-align: left; }
-        .modal-user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); }
-        .modal-user-name { font-weight: 700; font-size: 0.9rem; color: var(--text-primary); }
-        .modal-user-time { font-size: 0.72rem; color: var(--text-tertiary); }
+        .modal-anon-note { background: var(--bg-surface-alt); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 16px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+        .modal-anon-note strong { color: var(--accent-green); }
         .btn-modal-close { width: 100%; padding: 11px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border); font-family: var(--font-sans); font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
         .btn-modal-close:hover { filter: brightness(1.1); }
 
@@ -349,16 +251,11 @@
             .topbar { padding: 8px 14px; }
             main { padding: 0 14px; }
             .hero { padding: 40px 0 32px; }
-            .accused-card { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
-            .accused-info { text-align: center; }
-            .accused-detail { justify-content: center; }
             .impact-cards { grid-template-columns: 1fr; }
             .evidence-grid { grid-template-columns: 1fr; }
             .verdict-card { padding: 24px 18px; }
             .spread-pill { font-size: 0.7rem; padding: 5px 10px; }
             .spread-pill span { display: none; }
-            .sig-tag .sig-tooltip { left: 0; transform: translateX(0); }
-            .sig-tag .sig-tooltip::after { left: 20px; transform: none; }
         }
     </style>
 </head>
@@ -375,14 +272,9 @@
     <main>
         <!-- ===== HERO ===== -->
         <section id="top" class="hero">
-            <div class="server-logo-area">
-                <div class="server-logo-placeholder" id="serverLogo" title="Logo del servidor">
-                    <span>&#128187;</span>
-                </div>
-                <div class="server-info">
-                    <div class="server-label">Comunidad de Discord</div>
-                    <div class="server-name">Programadores y Estudiantes</div>
-                </div>
+            <div class="server-info">
+                <div class="server-label">Comunidad de Discord</div>
+                <div class="server-name">Programadores y Estudiantes</div>
             </div>
 
             <p class="hero-lede">Un moderador ha <span class="highlight">quebrantado la confianza</span> de toda una comunidad.</p>
@@ -390,7 +282,7 @@
             <div class="hero-actions">
                 <div class="countdown-strip">
                     <span class="countdown-number" id="counterNumber">&mdash;</span>
-                    <span class="countdown-label">firmas respaldan<br>esta resolución</span>
+                    <span class="countdown-label">firmas anónimas respaldan<br>esta resolución</span>
                 </div>
 
                 <button class="btn-sign" id="btnSign" disabled>
@@ -417,7 +309,7 @@
                         <span>Telegram</span>
                     </a>
                     <a class="spread-pill spread-copy" href="#" id="shareCopy">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
                         <span>Copiar</span>
                     </a>
                 </div>
@@ -430,19 +322,14 @@
 
         <!-- ===== ACCUSED CARD ===== -->
         <div class="accused-card">
-            <div class="accused-photo" id="accusedPhoto" title="Foto de Armin">
-                <span class="placeholder-icon">&#128100;</span>
-            </div>
-            <div class="accused-info">
-                <div class="accused-badge">&#9888; Sujeto de expulsión</div>
-                <div class="accused-name">Armin</div>
-                <div class="accused-detail">
-                    <div class="detail-item"><span class="detail-label">Username</span><span class="detail-value red">armin</span></div>
-                    <div class="detail-item"><span class="detail-label">Rol</span><span class="detail-value red">Moderador (suspendido)</span></div>
-                    <div class="detail-item"><span class="detail-label">Ingreso</span><span class="detail-value">2024</span></div>
-                    <div class="detail-item"><span class="detail-label">Denuncias</span><span class="detail-value red">4 activas</span></div>
-                    <div class="detail-item"><span class="detail-label">Estado</span><span class="detail-value red" style="font-family:var(--font-sans);font-weight:700;">Baneado</span></div>
-                </div>
+            <div class="accused-badge">&#9888; Sujeto de expulsión</div>
+            <div class="accused-name">Armin</div>
+            <div class="accused-detail">
+                <div class="detail-item"><span class="detail-label">Username</span><span class="detail-value red">armin</span></div>
+                <div class="detail-item"><span class="detail-label">Rol</span><span class="detail-value red">Moderador (suspendido)</span></div>
+                <div class="detail-item"><span class="detail-label">Ingreso</span><span class="detail-value">2024</span></div>
+                <div class="detail-item"><span class="detail-label">Denuncias</span><span class="detail-value red">4 activas</span></div>
+                <div class="detail-item"><span class="detail-label">Estado</span><span class="detail-value red" style="font-family:var(--font-sans);font-weight:700;">Baneado</span></div>
             </div>
         </div>
 
@@ -451,7 +338,6 @@
             <h2>Comunicado del administrador</h2>
             <div class="owner-statement">
                 <div class="owner-meta">
-                    <div class="owner-avatar">LD</div>
                     <div><div class="owner-name">L Darki</div><div class="owner-role">Owner &mdash; Programadores y Estudiantes</div></div>
                 </div>
                 <p>A la comunidad en general: quiero abordar directamente la situación que nos ocupa. Durante un tiempo considerable he observado con preocupación cómo la confianza que deposité en ciertos miembros del equipo de moderación se ha erosionado hasta llegar a un punto irreparable. En el caso específico de Armin, mi valoración personal es clara: he perdido el respeto y la confianza que alguna vez tuve hacia él como moderador y como par dentro de esta comunidad.</p>
@@ -471,11 +357,6 @@
                 <li>Uso de la posición de moderador para generar un ambiente de intimidación.</li>
                 <li>Normalización de la agresión verbal desde una posición de poder.</li>
             </ul>
-            <h3>Evidencia documental</h3>
-            <div class="evidence-grid">
-                <div class="evidence-placeholder"><div class="icon">&#128247;</div>[Captura &mdash; Comentario humillante]</div>
-                <div class="evidence-placeholder"><div class="icon">&#128247;</div>[Captura &mdash; Contexto del chat]</div>
-            </div>
         </section>
 
         <!-- ===== INJUSTICIA ===== -->
@@ -485,11 +366,6 @@
             <div class="callout-warning">
                 <h3>La parcialidad de un moderador no es un defecto menor: es una falla sistémica</h3>
                 <p>Al proteger a unos mientras castiga a otros, Armin ha creado un entorno de favoritismo donde la proximidad personal determina si estás por encima o por debajo de la ley comunitaria.</p>
-            </div>
-            <div class="evidence-grid">
-                <div class="evidence-placeholder"><div class="icon">&#128247;</div>[Evidencia &mdash; Favoritismo]</div>
-                <div class="evidence-placeholder"><div class="icon">&#128247;</div>[Evidencia &mdash; Amonestación injusta]</div>
-                <div class="evidence-placeholder"><div class="icon">&#128247;</div>[Evidencia &mdash; Omisión ante violaciones]</div>
             </div>
         </section>
 
@@ -503,42 +379,22 @@
             </div>
         </section>
 
-        <!-- ===== EMILY ===== -->
-        <section id="emily" class="content-section">
-            <h2>Petición formal de la miembro Emily</h2>
-            <div class="emily-letter">
-                <div class="emily-header">
-                    <div class="emily-avatar">E</div>
-                    <div><div class="emily-name">Emily</div><div class="emily-label">Miembro activa &mdash; Solicitud formal de baneo</div></div>
+        <!-- ===== TESTIMONIOS ===== -->
+        <section id="testimonios" class="content-section">
+            <h2>Peticiones formales de miembros</h2>
+            <div class="testimonial-letter">
+                <div class="testimonial-header">
+                    <div class="testimonial-name">Emily</div>
+                    <div class="testimonial-label">Miembro activa &mdash; Solicitud formal de baneo</div>
                 </div>
                 <p>Como miembro activa de esta comunidad, presento formalmente mi solicitud de expulsión permanente del moderador Armin. Las conductas de Armin han afectado directamente la identidad y los sentimientos nacionales de miembros venezolanos del servidor; su comportamiento disruptivo ha deteriorado la convivencia; y el patrón de abuso de poder hace imposible que siga ejerciendo funciones de moderación con credibilidad alguna.</p>
             </div>
-            <div class="emily-letter">
-                <div class="emily-header">
-                    <div class="emily-avatar">K</div>
-                    <div><div class="emily-name">karim</div><div class="emily-label">Miembro inactivo &mdash; Solicitud formal de baneo</div></div>
+            <div class="testimonial-letter">
+                <div class="testimonial-header">
+                    <div class="testimonial-name">karim</div>
+                    <div class="testimonial-label">Miembro inactivo &mdash; Solicitud formal de baneo</div>
                 </div>
-                <p>Como miembro de esta comunidad, presento esta queja respecto a la actuación del moderador Armin. En una ocasión publiqué un mensaje que contenía un spoiler marcado correctamente y una broma relacionada con el tema de la conversación. Sin embargo, el mensaje fue eliminado sin que se me explicara qué regla había incumplido o por qué se consideró necesario borrarlo.
-
-E
-Considero que los moderadores deberían actuar con transparencia y explicar sus decisiones cuando intervienen en el contenido de los usuarios. La falta de comunicación en este caso generó confusión y dio la impresión de que la medida fue tomada de forma arbitraria.
-
-Por ello, solicito que se revise este incidente y la manera en que Armin ejerce sus funciones de moderación, con el fin de garantizar que las reglas se apliquen de forma clara, consistente y justa para todos los miembros de la comunidad.</p>
-            </div>
-        </section>
-
-        <!-- ===== FIRMAS ===== -->
-        <section id="signatures" class="content-section">
-            <h2>Firmas de respaldo</h2>
-
-            <p class="sig-carousel-header">Firmantes</p>
-            <div class="sig-carousel-section">
-                <div class="sig-carousel-track" id="sigCarouselTrack"></div>
-            </div>
-
-            <div class="signatures-wrap">
-                <p class="sig-list-header">Todas las firmas</p>
-                <div class="signatures-list" id="signaturesList"></div>
+                <p>Como miembro de esta comunidad, presento esta queja respecto a la actuación del moderador Armin. En una ocasión publiqué un mensaje que contenía un spoiler marcado correctamente y una broma relacionada con el tema de la conversación. Sin embargo, el mensaje fue eliminado sin que se me explicara qué regla había incumplido o por qué se consideró necesario borrarlo. Considero que los moderadores deberían actuar con transparencia y explicar sus decisiones cuando intervienen en el contenido de los usuarios. La falta de comunicación en este caso generó confusión y dio la impresión de que la medida fue tomada de forma arbitraria. Por ello, solicito que se revise este incidente y la manera en que Armin ejerce sus funciones de moderación, con el fin de garantizar que las reglas se apliquen de forma clara, consistente y justa para todos los miembros de la comunidad.</p>
             </div>
         </section>
 
@@ -559,18 +415,14 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
         <div class="footer-date" id="footerDate"></div>
     </footer>
 
-    <!-- ===== MODAL: Gracias por firmar ===== -->
+    <!-- ===== MODAL: Gracias por firmar (anónimo) ===== -->
     <div class="modal-overlay" id="thanksModal">
         <div class="modal-box">
             <div class="modal-icon" id="thanksIcon">&#10003;</div>
             <h3 class="modal-title" id="thanksTitle">&#161;Gracias por firmar!</h3>
-            <p class="modal-desc" id="thanksDesc">Tu firma ha sido registrada exitosamente.</p>
-            <div class="modal-user-info" id="thanksUserInfo">
-                <img class="modal-user-avatar" id="thanksAvatar" src="" alt="">
-                <div>
-                    <div class="modal-user-name" id="thanksUsername"></div>
-                    <div class="modal-user-time" id="thanksTime"></div>
-                </div>
+            <p class="modal-desc" id="thanksDesc">Tu firma anónima ha sido registrada exitosamente.</p>
+            <div class="modal-anon-note">
+                Tu firma es <strong>completamente anónima</strong>. No se almacena tu nombre, foto ni información personal. Solo se registra tu cuenta de Discord para evitar firmas duplicadas.
             </div>
             <button class="btn-modal-close" id="thanksClose">Cerrar</button>
         </div>
@@ -588,9 +440,9 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
         //  CONFIGURACIÓN — se carga desde config.json
         //  (generado por GitHub Actions con Secrets)
         // ═══════════════════════════════════════════════
-        var HOST_URL = 'https://arminserver.alwaysdata.net';
-        var DISCORD_CLIENT_ID = '1515894462222565467';
-        var allFirmas = [];
+        var HOST_URL = '';
+        var DISCORD_CLIENT_ID = '';
+        var firmasCount = 0;
         var configLoaded = false;
 
         // ═══════════════════════════════════════════════
@@ -617,29 +469,7 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
         });
 
         // ═══════════════════════════════════════════════
-        //  TIEMPO RELATIVO (en español)
-        // ═══════════════════════════════════════════════
-        function timeAgo(dateStr) {
-            var now = new Date();
-            var then = new Date(dateStr);
-            var diffMs = now - then;
-            if (diffMs < 0) diffMs = 0;
-            var seconds = Math.floor(diffMs / 1000);
-            var minutes = Math.floor(seconds / 60);
-            var hours = Math.floor(minutes / 60);
-            var days = Math.floor(hours / 24);
-            var months = Math.floor(days / 30);
-            var years = Math.floor(days / 365);
-            if (years > 0) return 'hace ' + years + (years === 1 ? ' año' : ' años');
-            if (months > 0) return 'hace ' + months + (months === 1 ? ' mes' : ' meses');
-            if (days > 0) return 'hace ' + days + (days === 1 ? ' día' : ' días');
-            if (hours > 0) return 'hace ' + hours + (hours === 1 ? ' hora' : ' horas');
-            if (minutes > 0) return 'hace ' + minutes + (minutes === 1 ? ' minuto' : ' minutos');
-            return 'ahora mismo';
-        }
-
-        // ═══════════════════════════════════════════════
-        //  CARGAR CONFIG + FIRMAS
+        //  CARGAR CONFIG + FIRMAS (solo contador)
         // ═══════════════════════════════════════════════
         function initApp() {
             // 1) Cargar config.json (generado por GitHub Actions con Secrets)
@@ -652,12 +482,11 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
                     enableSignButton();
                 })
                 .catch(function() {
-                    // config.json no existe (local dev o no deployado aún)
                     console.warn('config.json no encontrado. Botón de firma deshabilitado.');
                     configLoaded = false;
                 })
                 .finally(function() {
-                    // 2) Cargar firmas siempre, con o sin config
+                    // 2) Cargar contador de firmas siempre
                     loadFirmas();
                 });
         }
@@ -670,119 +499,43 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
         }
 
         function loadFirmas() {
-            // Cargar firmas_old.json local (siempre disponible en GitHub Pages)
+            // Cargar firmas_old.json (contador base local)
             var oldPromise = fetch('./firmas_old.json')
                 .then(function(r) { return r.json(); })
-                .catch(function() { return []; });
+                .then(function(arr) { return Array.isArray(arr) ? arr.length : 0; })
+                .catch(function() { return 0; });
 
             // Cargar firmas dinámicas del host (puede fallar)
             var newPromise;
             if (HOST_URL) {
-                newPromise = fetch(HOST_URL + '/api/firmas', {
+                newPromise = fetch(HOST_URL + '/api/firmas/count', {
                         mode: 'cors',
                         headers: { 'ngrok-skip-browser-warning': 'true' }
                     })
                     .then(function(r) { return r.json(); })
-                    .then(function(d) { return d.firmas || []; })
-                    .catch(function() { return []; });
+                    .then(function(d) { return d.count || 0; })
+                    .catch(function() { return 0; });
             } else {
-                newPromise = Promise.resolve([]);
+                newPromise = Promise.resolve(0);
             }
 
             Promise.all([oldPromise, newPromise]).then(function(results) {
-                var oldFirmas = results[0];
-                var newFirmas = results[1];
-                allFirmas = mergeFirmas(oldFirmas, newFirmas);
-                renderAll();
+                firmasCount = results[0] + results[1];
+                renderCounter();
             });
-        }
-
-        // Deduplicar: si alguien de firmas_old firmó de nuevo por Discord,
-        // la entrada nueva (con avatar real) reemplaza la vieja
-        function mergeFirmas(oldFirmas, newFirmas) {
-            var result = oldFirmas.slice();
-            newFirmas.forEach(function(nf) {
-                var idx = -1;
-                // Buscar por discord_id primero
-                if (nf.discord_id) {
-                    idx = result.findIndex(function(f) { return f.discord_id === nf.discord_id; });
-                }
-                // Luego por username
-                if (idx === -1 && nf.username) {
-                    idx = result.findIndex(function(f) {
-                        return f.username && f.username.toLowerCase() === nf.username.toLowerCase();
-                    });
-                }
-                if (idx !== -1) {
-                    result[idx] = nf; // Reemplazar con la versión actualizada
-                } else {
-                    result.push(nf);
-                }
-            });
-            return result;
-        }
-
-        function renderAll() {
-            renderCounter();
-            renderCarousel();
-            renderSignaturesList();
         }
 
         // ═══════════════════════════════════════════════
         //  CONTADOR
         // ═══════════════════════════════════════════════
         function renderCounter() {
-            document.getElementById('counterNumber').textContent = allFirmas.length;
-        }
-
-        // ═══════════════════════════════════════════════
-        //  CARRUSEL AUTO-SCROLLING (sin flechas)
-        // ═══════════════════════════════════════════════
-        function renderCarousel() {
-            var track = document.getElementById('sigCarouselTrack');
-            track.innerHTML = '';
-            if (allFirmas.length === 0) return;
-            var html = '';
-            allFirmas.forEach(function(f) {
-                var imgSrc = f.avatar || '/assets/avatars/default.png';
-                html += '<div class="sig-carousel-item">' +
-                    '<img src="' + imgSrc + '" alt="' + f.nombre + '" onerror="this.src=\'/assets/avatars/default.png\'">' +
-                    '<div class="sc-name">' + f.nombre + '</div>' +
-                '</div>';
-            });
-            track.innerHTML = html + html; // Duplicar para loop infinito
-        }
-
-        // ═══════════════════════════════════════════════
-        //  LISTA DE FIRMAS CON TOOLTIP
-        // ═══════════════════════════════════════════════
-        function renderSignaturesList() {
-            var list = document.getElementById('signaturesList');
-            list.innerHTML = '';
-            var sorted = allFirmas.slice().sort(function(a, b) {
-                return new Date(b.fecha) - new Date(a.fecha);
-            });
-            sorted.forEach(function(f) {
-                var imgSrc = f.avatar || '/assets/avatars/default.png';
-                var tag = document.createElement('span');
-                tag.className = 'sig-tag';
-                tag.innerHTML = '<span class="at">@</span>' + f.nombre +
-                    '<span class="sig-tooltip">' +
-                        '<img class="sig-tooltip-img" src="' + imgSrc + '" alt="" onerror="this.src=\'/assets/avatars/default.png\'">' +
-                        '<div class="sig-tooltip-info">' +
-                            '<span class="sig-tooltip-name">@' + f.username + '</span>' +
-                            '<span class="sig-tooltip-action">&#10003; Firmó esta resolución</span>' +
-                            '<span class="sig-tooltip-time">' + timeAgo(f.fecha) + '</span>' +
-                        '</div>' +
-                    '</span>';
-                list.appendChild(tag);
-            });
+            document.getElementById('counterNumber').textContent = firmasCount;
         }
 
         // ═══════════════════════════════════════════════
         //  BOTÓN FIRMAR → DISCORD OAUTH
         //  El redirect_uri apunta a ESTA página (GitHub Pages),
-        //  NO al host. Así el usuario nunca vee ngrok.
+        //  NO al host. Así el usuario nunca ve ngrok.
         //  Discord devuelve ?code=xxx y el JS lo manda al host.
         // ═══════════════════════════════════════════════
         var btnSign = document.getElementById('btnSign');
@@ -792,64 +545,48 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
                 showToast('El sistema de firmas aún no está configurado. Intenta más tarde.');
                 return;
             }
-            // redirect_uri = esta misma página (GitHub Pages), NO el host
             var pageBase = window.location.origin + window.location.pathname;
             var discordUrl = 'https://discord.com/api/oauth2/authorize?' +
                 'client_id=' + DISCORD_CLIENT_ID +
                 '&redirect_uri=' + encodeURIComponent(pageBase) +
                 '&response_type=code&scope=identify';
-            window.location.href = 'https://discord.com/oauth2/authorize?client_id=1515894462222565467&response_type=code&redirect_uri=https%3A%2F%2Farminbaneado.com&scope=identify';
+            window.location.href = discordUrl;
         });
 
         // ═══════════════════════════════════════════════
         //  DETECTAR RETORNO DE DISCORD
         //  Discord redirige a ESTA página con ?code=xxx
         //  El JS manda ese código al host por fetch
-        //  (el usuario NUNCA navega al host/ngrok)
         // ═══════════════════════════════════════════════
         function checkDiscordReturn() {
             var params = new URLSearchParams(window.location.search);
 
-            // Caso 1: Discord devolvió un ?code= (flujo nuevo)
             var code = params.get('code');
             if (code && HOST_URL) {
-                cleanURL(); // Limpiar URL inmediatamente
+                cleanURL();
                 showToast('Verificando tu cuenta de Discord...');
                 sendCodeToHost(code);
                 return;
             }
 
-            // Caso 2: El host redirigió con parámetros (flujo viejo / fallback)
-            var discordId = params.get('discord_id');
-            var username = params.get('username');
-            var avatar = params.get('avatar');
-            var action = params.get('action');
-            var message = params.get('message');
+            // Fallback: error params del host
             var error = params.get('error');
-
             if (error) {
                 var errorMessages = {
                     'no_code': 'No se recibió código de Discord.',
                     'no_token': 'No se pudo obtener el token de Discord.',
                     'no_user': 'No se pudieron obtener tus datos de Discord.',
                     'rate_limit': 'Estás firmando muy rápido. Espera unos segundos.',
+                    'already_signed': 'Ya has firmado esta resolución.',
                     'oauth_failed': 'Error al verificar con Discord. Intenta de nuevo.'
                 };
                 showToast(errorMessages[error] || 'Error: ' + error);
-                cleanURL();
-                return;
-            }
-
-            if (discordId && username) {
-                showThanksModal(username, action, message, avatar);
-                loadFirmas();
                 cleanURL();
             }
         }
 
         // ═══════════════════════════════════════════════
         //  ENVIAR CÓDIGO AL HOST POR FETCH
-        //  (el usuario nunca sale de GitHub Pages)
         // ═══════════════════════════════════════════════
         function sendCodeToHost(code) {
             var btn = document.getElementById('btnSign');
@@ -874,15 +611,13 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
                     showToast(data.message || data.error);
                     return;
                 }
-                // Firma exitosa — mostrar modal
-                var user = data.user || {};
-                showThanksModal(
-                    user.username || '',
-                    data.action || 'nueva',
-                    data.message || '¡Gracias por firmar!',
-                    user.avatar || ''
-                );
-                loadFirmas(); // Recargar firmas
+                // Firma exitosa — incrementar contador y mostrar modal
+                if (data.action === 'nueva') {
+                    firmasCount++;
+                    renderCounter();
+                }
+                showThanksModal(data.action);
+                loadFirmas(); // Recargar conteo del servidor
             })
             .catch(function(err) {
                 console.error('Firma error:', err);
@@ -909,47 +644,19 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
         }
 
         // ═══════════════════════════════════════════════
-        //  MODAL: GRACIAS POR FIRMAR
+        //  MODAL: GRACIAS POR FIRMAR (anónimo)
         // ═══════════════════════════════════════════════
-        function showThanksModal(username, action, message, avatarParam) {
+        function showThanksModal(action) {
             var modal = document.getElementById('thanksModal');
             var title = document.getElementById('thanksTitle');
             var desc = document.getElementById('thanksDesc');
-            var avatarEl = document.getElementById('thanksAvatar');
-            var uname = document.getElementById('thanksUsername');
-            var time = document.getElementById('thanksTime');
 
-            if (action === 'actualizada') {
-                title.textContent = '¡Gracias por firmar otra vez!';
+            if (action === 'ya_firmada') {
+                title.textContent = 'Ya habías firmado';
+                desc.textContent = 'Tu firma anónima ya estaba registrada. No es necesario firmar de nuevo.';
             } else {
                 title.textContent = '¡Gracias por firmar!';
-            }
-
-            desc.textContent = message || 'Tu firma ha sido registrada exitosamente.';
-
-            var avatarSrc = avatarParam;
-            if (!avatarSrc) {
-                var firma = allFirmas.find(function(f) {
-                    return f.username === username || f.discord_id === username;
-                });
-                if (firma) {
-                    avatarSrc = firma.avatar;
-                    uname.textContent = '@' + firma.username;
-                    time.textContent = 'Firmó ' + timeAgo(firma.fecha);
-                } else {
-                    uname.textContent = '@' + username;
-                    time.textContent = 'Ahora mismo';
-                }
-            } else {
-                uname.textContent = '@' + username;
-                time.textContent = 'Ahora mismo';
-            }
-
-            if (avatarSrc) {
-                avatarEl.src = avatarSrc;
-                avatarEl.onerror = function() { this.src = '/assets/avatars/default.png'; };
-            } else {
-                avatarEl.src = '/assets/avatars/default.png';
+                desc.textContent = 'Tu firma anónima ha sido registrada exitosamente.';
             }
 
             modal.classList.add('active');
@@ -999,11 +706,6 @@ Por ello, solicito que se revise este incidente y la manera en que Armin ejerce 
         // ═══════════════════════════════════════════════
         initApp();
         checkDiscordReturn();
-
-        // Actualizar tiempos relativos cada 60 segundos
-        setInterval(function() {
-            if (allFirmas.length > 0) renderSignaturesList();
-        }, 60000);
 
     })();
     </script>

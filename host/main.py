@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
 """
 Backend API — Resolución Caso Armin
-Servidor Python que maneja Discord OAuth y firmas.
+Servidor Python que maneja Discord OAuth y firmas anónimas.
+
+Las firmas son ANÓNIMAS: solo se guarda el discord_id para evitar
+duplicados y la fecha. No se almacenan nombres, avatares ni datos
+personales.
 
 Flujo de firma (el usuario NUNCA visita ngrok):
   1. Frontend (GitHub Pages) manda al usuario a Discord OAuth
   2. Discord redirige de vuelta a GitHub Pages con ?code=xxx
   3. El JS de GitHub Pages manda ese código al host por POST /api/firmar
-  4. El host intercambia el código por token, obtiene datos, guarda firma
-  5. El host devuelve JSON con los datos del usuario
+  4. El host intercambia el código por token, obtiene discord_id, guarda firma
+  5. El host devuelve JSON con acción y mensaje (sin datos personales)
 
 Endpoints:
-  GET  /api/config           → config pública para el frontend
-  GET  /api/firmas           → devuelve firmas dinámicas
-  POST /api/firmar            → recibe { code } de Discord, devuelve JSON (FLUJO PRINCIPAL)
-  GET  /api/firmar/callback  → callback de Discord OAuth (redirige, flujo alternativo)
-  GET  /api/health           → estado del servidor
+  GET  /api/config            → config pública para el frontend
+  GET  /api/firmas/count      → devuelve cantidad de firmas
+  POST /api/firmar             → recibe { code } de Discord, devuelve JSON
+  GET  /api/health            → estado del servidor
 
 Variables de entorno (.env o sistema):
   DISCORD_CLIENT_ID=
@@ -31,10 +34,8 @@ import os
 import json
 import time
 from pathlib import Path
-from urllib.parse import urlencode
-from fastapi import FastAPI, Request, Query
-from fastapi.responses import RedirectResponse, JSONResponse, FileResponse, HTMLResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import httpx
@@ -43,7 +44,6 @@ import uvicorn
 # ─── Config desde variables de entorno ───────────────────────
 DISCORD_CLIENT_ID = os.environ.get("DISCORD_CLIENT_ID", "")
 DISCORD_CLIENT_SECRET = os.environ.get("DISCORD_CLIENT_SECRET", "")
-# redirect_uri ahora es GitHub Pages (el usuario regresa ahí)
 DISCORD_REDIRECT_URI = os.environ.get("DISCORD_REDIRECT_URI", "").rstrip("/")
 GITHUB_PAGES_URL = os.environ.get("GITHUB_PAGES_URL", "").rstrip("/")
 HOST_URL = os.environ.get("HOST_URL", "").rstrip("/")
@@ -52,8 +52,7 @@ PORT = int(os.environ.get("PORT", "3000"))
 
 # ─── Paths ───────────────────────────────────────────────────
 FIRMAS_PATH = DATA_DIR / "firmas.json"
-AVATAR_DIR = DATA_DIR / "assets" / "avatars"
-AVATAR_DIR.mkdir(parents=True, exist_ok=True)
+FIRMAS_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 # ─── Rate Limiting (en memoria) ──────────────────────────────
 _rate_limits: dict[str, float] = {}
@@ -79,6 +78,10 @@ class FirmarRequest(BaseModel):
 
 # ─── Helpers ─────────────────────────────────────────────────
 def read_firmas() -> list:
+    """
+    Lee la lista de firmas. Cada firma es un dict con solo:
+      { "discord_id": "...", "fecha": "..." }
+    """
     try:
         return json.loads(FIRMAS_PATH.read_text("utf-8"))
     except Exception:
@@ -91,35 +94,11 @@ def write_firmas(data: list):
     )
 
 
-async def download_avatar(discord_id: str, avatar_hash: str, username: str) -> str:
-    """Descarga avatar de Discord y lo guarda localmente. Devuelve URL local."""
-    if not discord_id or not avatar_hash:
-        return f"{HOST_URL}/assets/avatars/default.png"
-
-    avatar_url = f"https://cdn.discordapp.com/avatars/{discord_id}/{avatar_hash}.png?size=128"
-    filename = f"{username}.png"
-    filepath = AVATAR_DIR / filename
-    web_url = f"{HOST_URL}/assets/avatars/{filename}"
-
-    try:
-        async with httpx.AsyncClient(timeout=10, follow_redirects=True) as client:
-            resp = await client.get(avatar_url)
-            if resp.status_code == 200 and len(resp.content) > 1024:
-                filepath.write_bytes(resp.content)
-                print(f"🖼️  Avatar saved: {filepath} ({len(resp.content)//1024}KB)")
-                return web_url
-    except Exception as e:
-        print(f"⚠️  Avatar download error for {username}: {e}")
-
-    # Fallback: usar URL de Discord CDN directamente
-    return avatar_url.split("?")[0]
-
-
 async def process_discord_code(code: str) -> dict:
     """
-    Intercambia un código de Discord OAuth por datos del usuario,
-    guarda la firma y devuelve el resultado.
-    Usado tanto por POST /api/firmar como por GET /api/firmar/callback.
+    Intercambia un código de Discord OAuth por el discord_id del usuario,
+    guarda la firma anónima y devuelve el resultado.
+    No se almacena nombre, avatar ni ningún dato personal.
     """
     # ── Intercambiar código por token ──
     async with httpx.AsyncClient(timeout=10) as client:
@@ -141,7 +120,7 @@ async def process_discord_code(code: str) -> dict:
         print(f"⚠️  Token exchange failed: {error}")
         return {"error": "no_token", "message": f"No se pudo obtener el token de Discord ({error})."}
 
-    # ── Obtener datos del usuario ──
+    # ── Obtener discord_id del usuario ──
     async with httpx.AsyncClient(timeout=10) as client:
         user_resp = await client.get(
             "https://discord.com/api/users/@me",
@@ -152,55 +131,36 @@ async def process_discord_code(code: str) -> dict:
     if "id" not in user_data:
         return {"error": "no_user", "message": "No se pudieron obtener tus datos de Discord."}
 
-    # ── Descargar avatar ──
-    avatar_path = await download_avatar(
-        user_data["id"],
-        user_data.get("avatar", ""),
-        user_data["username"],
-    )
+    discord_id = user_data["id"]
 
-    # ── Procesar firma ──
+    # ── Procesar firma anónima ──
     firmas = read_firmas()
     now_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
     existing = next(
-        (f for f in firmas if f.get("discord_id") == user_data["id"]),
+        (f for f in firmas if f.get("discord_id") == discord_id),
         None,
     )
 
     if existing:
-        existing["fecha"] = now_iso
-        existing["avatar"] = avatar_path
-        action = "actualizada"
-        message = "¡Gracias por firmar otra vez! Se actualizó tu firma."
+        action = "ya_firmada"
+        message = "Ya habías firmado esta resolución. Tu firma anónima ya estaba registrada."
     else:
         firmas.append(
             {
-                "nombre": user_data.get("global_name") or user_data["username"],
-                "username": user_data["username"],
-                "discord_id": user_data["id"],
-                "avatar": avatar_path,
+                "discord_id": discord_id,
                 "fecha": now_iso,
-                "rol": "Miembro",
             }
         )
         action = "nueva"
         message = "¡Gracias por firmar!"
 
     write_firmas(firmas)
-    print(f"✅ Firma {action}: @{user_data['username']} ({user_data['id']})")
+    print(f"✅ Firma {action}: discord_id={discord_id}")
 
     return {
         "action": action,
         "message": message,
-        "user": {
-            "nombre": user_data.get("global_name") or user_data["username"],
-            "username": user_data["username"],
-            "discord_id": user_data["id"],
-            "avatar": avatar_path,
-            "fecha": now_iso,
-            "rol": existing.get("rol", "Miembro") if existing else "Miembro",
-        },
     }
 
 
@@ -229,11 +189,18 @@ async def get_config():
     }
 
 
-# ─── GET /api/firmas ─────────────────────────────────────────
+# ─── GET /api/firmas/count ───────────────────────────────────
+@app.get("/api/firmas/count")
+async def get_firmas_count():
+    """Devuelve la cantidad de firmas anónimas registradas."""
+    return {"count": len(read_firmas())}
+
+
+# ─── GET /api/firmas (compatibilidad) ────────────────────────
 @app.get("/api/firmas")
 async def get_firmas():
-    """Devuelve todas las firmas dinámicas (las del host)."""
-    return {"firmas": read_firmas()}
+    """Devuelve cantidad de firmas (formato compatible)."""
+    return {"firmas": read_firmas(), "count": len(read_firmas())}
 
 
 # ─── POST /api/firmar — FLUJO PRINCIPAL ──────────────────────
@@ -241,9 +208,9 @@ async def get_firmas():
 async def firmar_post(request: Request, body: FirmarRequest):
     """
     Recibe { code: "xxx" } del frontend (GitHub Pages).
-    Intercambia el código por token, obtiene datos del usuario,
-    guarda firma y devuelve JSON.
-    
+    Intercambia el código por token, obtiene discord_id,
+    guarda firma anónima y devuelve JSON.
+
     El usuario NUNCA navega a ngrok — todo es por fetch desde GitHub Pages.
     """
     # Rate limit por IP
@@ -269,42 +236,6 @@ async def firmar_post(request: Request, body: FirmarRequest):
         return JSONResponse(status_code=400, content=result)
 
     return result
-
-
-# ─── GET /api/firmar/callback — FLUJO ALTERNATIVO ────────────
-@app.get("/api/firmar/callback")
-async def firmar_callback(request: Request, code: str = Query(None)):
-    """
-    Flujo alternativo: Discord redirige aquí directamente.
-    Procesa la firma y redirige a GitHub Pages con parámetros.
-    (Se mantiene como fallback)
-    """
-    redirect_target = GITHUB_PAGES_URL or HOST_URL
-    if not code:
-        return RedirectResponse(f"{redirect_target}?error=no_code")
-
-    client_ip = (
-        request.headers.get("x-forwarded-for", "").split(",")[0].strip()
-        or (request.client.host if request.client else "unknown")
-    )
-    if not check_rate_limit(client_ip):
-        return RedirectResponse(f"{redirect_target}?error=rate_limit")
-
-    result = await process_discord_code(code)
-
-    if "error" in result:
-        params = urlencode({"error": result["error"], "message": result.get("message", "")})
-        return RedirectResponse(f"{redirect_target}?{params}")
-
-    user = result["user"]
-    params = urlencode({
-        "discord_id": user["discord_id"],
-        "username": user["username"],
-        "avatar": user["avatar"],
-        "action": result["action"],
-        "message": result["message"],
-    })
-    return RedirectResponse(f"{redirect_target}?{params}")
 
 
 # ─── GET /api/health ─────────────────────────────────────────
@@ -337,31 +268,19 @@ async def serve_config():
     }
 
 
-# ─── GET /firmas_old.json ────────────────────────────────────
-@app.get("/firmas_old.json")
-async def serve_firmas_old():
-    path = Path("firmas_old.json")
-    if path.exists():
-        return FileResponse(path)
-    return JSONResponse(content=[])
-
-
-# ─── Archivos estáticos (avatares) ──────────────────────────
-app.mount("/assets", StaticFiles(directory=str(AVATAR_DIR.parent)), name="assets")
-
-
 # ─── Iniciar servidor ────────────────────────────────────────
 if __name__ == "__main__":
     print()
     print("═══════════════════════════════════════════")
     print("  Resolución Caso Armin — API Server")
+    print("  (Firmas anónimas — solo discord_id)")
     print("═══════════════════════════════════════════")
     print(f"  🌐  Host:        http://0.0.0.0:{PORT}")
     print(f"  📄  Frontend:    {GITHUB_PAGES_URL or '(no configurado)'}")
     print(f"  🔑  Discord:     {'✓ Configurado' if DISCORD_CLIENT_ID else '✗ NO configurado'}")
     print(f"  🔁  Redirect:    {DISCORD_REDIRECT_URI or '(no configurado)'}")
     print(f"  📁  Datos:       {DATA_DIR.resolve()}")
-    print(f"  🖼️  Avatares:    {AVATAR_DIR.resolve()}")
+    print(f"  📊  Firmas:      {len(read_firmas())}")
     print("═══════════════════════════════════════════")
     print()
     uvicorn.run(app, host="0.0.0.0", port=PORT)
