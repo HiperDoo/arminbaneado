@@ -303,7 +303,7 @@
         'use strict';
 
         // ── FIRMAS ──
-        var firmasCount = 0;
+        var firmasCount = -1; // -1 = no cargado aún
         var API_URL = 'https://arminserver.alwaysdata.net';
 
         function formatShort(n){
@@ -314,29 +314,35 @@
         }
 
         function renderCounter(){
-            document.getElementById('counterNumber').textContent=formatShort(firmasCount);
+            var el=document.getElementById('counterNumber');
             var fullEl=document.getElementById('counterFull');
+            if(firmasCount<0){
+                el.innerHTML='&mdash;';
+                fullEl.textContent='';
+                fullEl.classList.remove('visible');
+                return;
+            }
+            el.textContent=formatShort(firmasCount);
             fullEl.textContent=firmasCount.toLocaleString('es-ES');
             if(firmasCount>=1000){fullEl.classList.add('visible')}else{fullEl.classList.remove('visible')}
         }
 
-        // Load counter from API (primary source of truth)
-        fetch('./config.json').then(function(r){return r.json()}).then(function(d){
-            if(d.api_url){
-                API_URL=d.api_url;
-                fetch(API_URL+'/api/contador',{headers:{'ngrok-skip-browser-warning':'true'}}).then(function(r){return r.json()}).then(function(data){
-                    if(typeof data.count==='number'){firmasCount=data.count;renderCounter();}
-                }).catch(function(){});
-            }
-        }).catch(function(){});
-
-        // Refresh counter from API every 5 seconds (so other users' signatures appear)
-        setInterval(function(){
-            if(!API_URL) return;
-            fetch(API_URL+'/api/contador',{headers:{'ngrok-skip-browser-warning':'true'}}).then(function(r){return r.json()}).then(function(data){
+        function fetchCounter(){
+            var url=API_URL+'/api/contador';
+            fetch(url,{headers:{'ngrok-skip-browser-warning':'true'}}).then(function(r){return r.json()}).then(function(data){
                 if(typeof data.count==='number' && data.count!==firmasCount){firmasCount=data.count;renderCounter();}
             }).catch(function(){});
-        },5000);
+        }
+
+        // Load counter from API on page load (primary source of truth)
+        // Try config.json first to override API_URL
+        fetch('./config.json').then(function(r){return r.json()}).then(function(d){
+            if(d.api_url){API_URL=d.api_url;}
+            fetchCounter();
+        }).catch(function(){fetchCounter();});
+
+        // Refresh counter from API every 5 seconds (so other users' signatures appear in real-time)
+        setInterval(fetchCounter,5000);
 
         // ── THEME ──
         var htmlEl=document.documentElement;
