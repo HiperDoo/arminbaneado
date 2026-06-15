@@ -1,463 +1,1023 @@
 <!DOCTYPE html>
-<html lang="es" dir="ltr" data-theme="dark">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <meta name="description" content="Caso Armin — Recolección de firmas para la expulsión del moderador Armin de la comunidad Programadores y Estudiantes en Discord.">
-    <meta property="og:title" content="Firma para expulsar a Armin — Programadores y Estudiantes">
-    <meta property="og:description" content="Un moderador ha quebrantado la confianza de toda una comunidad. Firma para respaldar la expulsión de Armin en Programadores y Estudiantes.">
+    <meta name="description" content="Caso Armin — Firma para que baneen al moderador Armin de la comunidad Programadores y Estudiantes en Discord.">
+    <meta property="og:title" content="Firma para banear a Armin — Programadores y Estudiantes">
+    <meta property="og:description" content="Armin sigue siendo moderador y la comunidad exige su expulsión. Firma ahora para sumar tu voz.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arminbaneado.com">
-    <meta property="og:site_name" content="Caso Armin">
+    <meta property="og:site_name" content="Ban Armin">
     <meta property="og:image" content="https://arminbaneado.com/favicon.svg">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Firma para expulsar a Armin — Programadores y Estudiantes">
-    <meta name="twitter:description" content="Un moderador ha quebrantado la confianza de toda una comunidad. Firma para respaldar su expulsión.">
+    <meta name="twitter:title" content="Firma para banear a Armin — Programadores y Estudiantes">
+    <meta name="twitter:description" content="Armin sigue siendo moderador y la comunidad exige su expulsión. Firma ahora.">
     <meta name="twitter:image" content="https://arminbaneado.com/favicon.svg">
     <meta name="theme-color" content="#f85149">
-    <title>Firma para expulsar a Armin — Caso Armin</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Firma para banear a Armin — Caso Armin</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' x='5'>🔥</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        [data-theme="dark"]{--bg-body:#0d1117;--bg-surface:#161b22;--bg-surface-alt:#1c2333;--bg-inset:#0d1117;--border:rgba(240,246,252,.1);--border-bright:rgba(240,246,252,.2);--text-primary:#e6edf3;--text-secondary:#8b949e;--text-tertiary:#6e7681;--accent-red:#f85149;--accent-red-subtle:rgba(248,81,73,.15);--accent-red-glow:rgba(248,81,73,.3)}
-        [data-theme="light"]{--bg-body:#fff;--bg-surface:#f6f8fa;--bg-surface-alt:#eaeef2;--bg-inset:#fff;--border:rgba(31,35,40,.12);--border-bright:rgba(31,35,40,.25);--text-primary:#1f2328;--text-secondary:#656d76;--text-tertiary:#8b949e;--accent-red:#cf222e;--accent-red-subtle:rgba(207,34,46,.08);--accent-red-glow:rgba(207,34,46,.15)}
-        :root{--accent-green:#3fb950;--accent-amber:#d29922;--accent-blue:#58a6ff;--accent-orange:#f0883e;--accent-purple:#bc8cff;--radius:12px;--radius-sm:8px;--radius-lg:16px;--shadow-md:0 4px 16px rgba(0,0,0,.4);--shadow-lg:0 8px 32px rgba(0,0,0,.5);--font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace}
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth;font-size:16px}
-        body{font-family:var(--font-sans);background:var(--bg-body);color:var(--text-primary);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
-        a{color:var(--accent-blue);text-decoration:none}a:hover{text-decoration:underline}
-        .topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:flex-end;padding:10px 24px;background:var(--bg-surface);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
-        #theme-toggle{background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 8px;cursor:pointer;color:var(--text-secondary);display:flex;align-items:center;transition:all .2s}
-        #theme-toggle:hover{background:var(--accent-red-subtle);border-color:var(--accent-red);color:var(--accent-red)}
-        main{max-width:820px;margin:0 auto;padding:0 24px}
-        .hero{padding:56px 0 40px;text-align:center;position:relative}
-        .hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--border-bright),transparent)}
-        .server-info{text-align:center;margin-bottom:24px}
-        .server-name{font-size:1rem;font-weight:700;color:var(--text-primary)}
-        .server-label{font-size:.72rem;font-weight:600;color:var(--accent-red);letter-spacing:.08em;text-transform:uppercase}
-        .hero-lede{font-size:clamp(1.5rem,4.5vw,2.4rem);font-weight:800;line-height:1.15;margin-bottom:20px;letter-spacing:-.03em}
-        .hero-lede .highlight{color:var(--accent-red)}
-        .hero-actions{margin-bottom:24px}
-        .countdown-strip{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
-        .countdown-number{font-size:clamp(3rem,9vw,4.5rem);font-weight:900;line-height:1;color:var(--accent-red);letter-spacing:-.04em;transition:transform .15s}
-        .countdown-full{font-family:var(--font-mono);font-size:.7rem;color:var(--text-tertiary);display:block;margin-top:2px}
-        .countdown-label{font-size:.9rem;color:var(--text-secondary);font-weight:500;text-align:left;line-height:1.35}
-        .btn-sign{display:inline-flex;align-items:center;gap:10px;background:var(--accent-red);color:#fff;border:none;padding:12px 28px;font-size:.95rem;font-weight:700;border-radius:100px;cursor:pointer;font-family:var(--font-sans);box-shadow:0 4px 16px var(--accent-red-glow);transition:all .25s}
-        .btn-sign:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--accent-red-glow);filter:brightness(1.1);color:#fff;text-decoration:none}
-        .btn-sign:active{transform:translateY(0)}
-        .btn-sign svg{width:18px;height:18px}
-        .share-heading{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-tertiary);margin:18px 0 10px;text-align:center}
-        .spread-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-        .spread-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:100px;font-size:.78rem;font-weight:600;color:var(--text-primary);background:var(--bg-surface);border:1px solid var(--border);cursor:pointer;transition:all .2s}
-        .spread-pill:hover{background:var(--bg-surface-alt);border-color:var(--border-bright);transform:translateY(-1px);text-decoration:none}
-        .spread-pill svg{width:14px;height:14px;flex-shrink:0}
-        .sp-discord{border-color:rgba(88,101,242,.3)}.sp-discord:hover{background:rgba(88,101,242,.1);border-color:#5865F2}
-        .sp-x:hover{border-color:var(--text-primary)}.sp-wa:hover{border-color:#25D366;background:rgba(37,211,102,.08)}
-        .sp-tg:hover{border-color:#26A5E4;background:rgba(38,165,228,.08)}.sp-ig:hover{border-color:#E4405F;background:rgba(228,64,95,.08)}
-        .sp-tt:hover{border-color:#fff;background:rgba(255,255,255,.05)}.sp-rd:hover{border-color:#FF4500;background:rgba(255,69,0,.08)}
-        .sp-fb:hover{border-color:#1877F2;background:rgba(24,119,242,.08)}.sp-li:hover{border-color:#0A66C2;background:rgba(10,102,194,.08)}
-        .sp-copy:hover{border-color:var(--accent-amber);background:rgba(210,153,34,.08)}
-        .hero-sub{font-size:1rem;color:var(--text-secondary);max-width:620px;margin:24px auto 10px;line-height:1.7}
-        .hero-sub strong{color:var(--text-primary)}
-        .hero-kicker{font-weight:600;color:var(--accent-amber);font-size:.9rem}
-        .scroll-cue{display:inline-block;color:var(--text-tertiary);font-size:1.4rem;margin:16px 0;animation:bob 2s ease-in-out infinite;text-decoration:none}
-        @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-        .accused-card{background:var(--bg-surface);border:1px solid var(--border);border-left:4px solid var(--accent-red);border-radius:var(--radius);padding:24px;margin:0 0 48px}
-        .accused-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-red-subtle);border:1px solid rgba(248,81,73,.3);color:var(--accent-red);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:8px}
-        .accused-name{font-size:1.3rem;font-weight:800;margin-bottom:4px}
-        .accused-detail{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.8rem;color:var(--text-secondary);margin-top:6px}
-        .accused-detail .di{display:flex;align-items:center;gap:4px}
-        .accused-detail .dl{color:var(--text-tertiary);font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
-        .accused-detail .dv{font-family:var(--font-mono);font-size:.8rem;color:var(--text-primary)}
-        .accused-detail .dv.red{color:var(--accent-red)}
-        .content-section{padding:52px 0;border-top:1px solid var(--border)}
-        .content-section h2{font-size:clamp(1.2rem,3vw,1.7rem);font-weight:800;margin-bottom:18px;letter-spacing:-.02em}
-        .content-section h3{font-size:1.05rem;font-weight:700;margin:22px 0 8px}
-        .content-section p{color:var(--text-secondary);font-size:.95rem;line-height:1.85;margin-bottom:12px}
-        .content-section p strong{color:var(--text-primary)}
-        .pull-quote{font-size:1.1rem;font-weight:700;color:var(--accent-red);border-left:4px solid var(--accent-red);padding:14px 18px;margin:20px 0;background:var(--accent-red-subtle);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
-        .owner-statement{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:18px 0}
-        .owner-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-        .owner-name{font-weight:700;font-size:.92rem}.owner-role{font-size:.72rem;color:var(--accent-amber);font-weight:600;letter-spacing:.04em}
-        .impact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:20px 0}
-        .impact-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:all .25s}
-        .impact-card:hover{border-color:var(--border-bright);box-shadow:var(--shadow-md)}
-        .impact-card h3{font-size:.95rem;font-weight:700;margin:0 0 8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-        .impact-card.ic h3{color:var(--accent-red)}.impact-card.it h3{color:var(--accent-amber)}.impact-card.ii h3{color:var(--accent-purple)}
-        .impact-card p{font-size:.85rem;line-height:1.7;margin-bottom:6px}
-        .facts-list{list-style:none;margin:18px 0}
-        .facts-list li{position:relative;padding:12px 16px 12px 38px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;font-size:.9rem;color:var(--text-secondary);line-height:1.65;transition:all .2s}
-        .facts-list li:hover{border-color:var(--accent-red);background:var(--accent-red-subtle)}
-        .facts-list li::before{content:'';position:absolute;left:14px;top:16px;width:10px;height:10px;background:var(--accent-red);border-radius:50%}
-        .testimonial-letter{background:linear-gradient(135deg,rgba(210,153,34,.06),rgba(210,153,34,.02));border:1px solid rgba(210,153,34,.2);border-left:4px solid var(--accent-amber);border-radius:var(--radius);padding:22px;margin:20px 0}
-        .testimonial-name{font-weight:700;font-size:.92rem}.testimonial-label{font-size:.68rem;color:var(--accent-amber);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
-        .callout-warning{background:var(--accent-red-subtle);border:1px solid rgba(248,81,73,.2);border-radius:var(--radius);padding:22px;margin:20px 0}
-        .callout-warning h3{color:var(--accent-red);font-size:1rem;margin-bottom:10px}
-        .callout-warning p{color:var(--text-secondary);font-size:.9rem;line-height:1.75;margin-bottom:6px}
-        .verdict-card{background:linear-gradient(135deg,var(--accent-red-subtle),rgba(248,81,73,.03));border:2px solid var(--accent-red);border-radius:var(--radius-lg);padding:36px;text-align:center;margin:24px 0;box-shadow:0 0 40px var(--accent-red-glow)}
-        .verdict-icon{font-size:2.2rem;margin-bottom:10px}
-        .verdict-title{font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:900;color:var(--accent-red);margin-bottom:12px;letter-spacing:-.02em}
-        .verdict-text{font-size:.92rem;line-height:1.85;color:var(--text-secondary);max-width:600px;margin:0 auto}
-        .verdict-text strong{color:var(--text-primary)}
-        .site-footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-tertiary);font-size:.78rem}
-        .footer-community{font-weight:700;color:var(--text-secondary);margin-bottom:4px}
-        /* MODALS */
-        .mo{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(4px)}
-        .mo.active{opacity:1;pointer-events:auto}
-        .mb{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;max-width:440px;width:92%;box-shadow:var(--shadow-lg);transform:translateY(20px) scale(.97);transition:transform .25s;text-align:center}
-        .mo.active .mb{transform:translateY(0) scale(1)}
-        .mt{font-size:1.15rem;font-weight:700;margin-bottom:6px}
-        .md{font-size:.82rem;color:var(--text-secondary);margin-bottom:16px;line-height:1.5}
-        /* SIGN CANVAS */
-        .sc-wrap{border:2px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:14px;background:#fff;position:relative}
-        .sc-wrap canvas{display:block;width:100%;touch-action:none;cursor:crosshair}
-        .sc-ph{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#bbb;font-size:.85rem;pointer-events:none;font-family:var(--font-sans)}
-        /* CAPTCHA */
-        .captcha-box{background:var(--bg-surface-alt);border:2px solid var(--border);border-radius:var(--radius-sm);padding:16px;margin-bottom:14px;text-align:left}
-        .captcha-title{font-size:.85rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-        .captcha-title svg{width:18px;height:18px;color:var(--accent-amber)}
-        .captcha-q{font-size:.82rem;color:var(--text-secondary);margin-bottom:10px;line-height:1.5}
-        .captcha-options{display:flex;flex-direction:column;gap:8px}
-        .captcha-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg-surface);border:2px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s}
-        .captcha-opt:hover{border-color:var(--border-bright);background:var(--bg-surface-alt)}
-        .captcha-opt.selected{border-color:var(--accent-green);background:rgba(63,185,80,.08)}
-        .captcha-opt.wrong{border-color:var(--accent-red);background:rgba(248,81,73,.08);animation:shake .4s ease}
-        .captcha-opt .co-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;font-size:.7rem}
-        .captcha-opt.selected .co-check{background:var(--accent-green);border-color:var(--accent-green);color:#fff}
-        .captcha-opt.wrong .co-check{background:var(--accent-red);border-color:var(--accent-red);color:#fff}
-        @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-        .captcha-status{font-size:.75rem;margin-top:8px;font-weight:600;display:flex;align-items:center;gap:6px}
-        .captcha-status.ok{color:var(--accent-green)}.captcha-status.fail{color:var(--accent-red)}
-        /* BUTTONS */
-        .modal-btns{display:flex;gap:10px}
-        .modal-btns button{flex:1;padding:10px 16px;border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid var(--border)}
-        .btn-clear{background:var(--bg-surface-alt);color:var(--text-primary)}.btn-clear:hover{background:var(--bg-surface);border-color:var(--border-bright)}
-        .btn-submit{background:var(--accent-red);color:#fff;border-color:var(--accent-red)}.btn-submit:hover{filter:brightness(1.1)}
-        .btn-submit:disabled{opacity:.35;cursor:not-allowed;filter:none}
-        .btn-close-m{width:100%;padding:9px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text-secondary);font-family:var(--font-sans);font-size:.8rem;cursor:pointer;margin-top:8px;transition:all .2s}
-        .btn-close-m:hover{background:var(--bg-surface-alt);color:var(--text-primary)}
-        /* THANKS */
-        .thanks-icon{font-size:2.5rem;margin-bottom:10px}
-        .thanks-anon{background:var(--bg-surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;margin-bottom:16px;font-size:.8rem;color:var(--text-secondary);line-height:1.6}
-        .thanks-anon strong{color:var(--accent-green)}
-        .btn-modal-close{width:100%;padding:11px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);font-family:var(--font-sans);font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;background:var(--accent-red);color:#fff;border-color:var(--accent-red)}
-        .btn-modal-close:hover{filter:brightness(1.1)}
-        /* DISCORD SHARE */
-        .share-link-box{display:flex;gap:8px;margin-bottom:14px}
-        .share-link-input{flex:1;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-surface-alt);color:var(--text-primary);font-family:var(--font-mono);font-size:.78rem;outline:none}
-        .share-link-input:focus{border-color:var(--accent-blue)}
-        .btn-copy-link{padding:8px 14px;border-radius:var(--radius-sm);border:1px solid var(--accent-blue);background:rgba(88,166,255,.1);color:var(--accent-blue);font-weight:600;font-size:.8rem;cursor:pointer;font-family:var(--font-sans);transition:all .2s;white-space:nowrap}
-        .btn-copy-link:hover{background:rgba(88,166,255,.2)}
-        /* TOAST */
-        .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--bg-surface);border:1px solid var(--accent-red);border-radius:var(--radius-sm);padding:12px 20px;font-size:.82rem;color:var(--text-primary);box-shadow:var(--shadow-lg);z-index:2000;opacity:0;transition:all .35s;max-width:90%;text-align:center;line-height:1.5}
-        .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-        @media(max-width:640px){.topbar{padding:8px 14px}main{padding:0 14px}.hero{padding:40px 0 32px}.impact-cards{grid-template-columns:1fr}.verdict-card{padding:24px 18px}.spread-pill{font-size:.7rem;padding:5px 10px}.spread-pill span{display:none}}
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --accent: #f85149;
+            --accent-hover: #ff6e67;
+            --accent-glow: rgba(248, 81, 73, 0.3);
+            --success: #3fb950;
+            --warning: #d29922;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --mono: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse 600px 400px at 20% 10%, rgba(248, 81, 73, 0.08), transparent),
+                radial-gradient(ellipse 500px 500px at 80% 80%, rgba(248, 81, 73, 0.05), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .header-emoji {
+            font-size: 64px;
+            display: block;
+            margin-bottom: 16px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent), #ff9492);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* ===== COUNTER ===== */
+        .counter-section {
+            text-align: center;
+            padding: 30px 0 40px;
+        }
+
+        .counter-number {
+            font-family: var(--mono);
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            text-shadow: 0 0 40px var(--accent-glow);
+            transition: transform 0.3s ease;
+        }
+
+        .counter-number.bump {
+            transform: scale(1.1);
+        }
+
+        .counter-full {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            display: none;
+        }
+
+        .counter-full.visible {
+            display: block;
+        }
+
+        .counter-label {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* ===== CASE SECTION ===== */
+        .case-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .case-section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .case-section p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .case-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ===== SIGN BUTTON ===== */
+        .sign-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .btn-sign {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 48px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), #e03e37);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            font-family: var(--font);
+            letter-spacing: 0.01em;
+        }
+
+        .btn-sign:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--accent-glow);
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+        }
+
+        .btn-sign:active {
+            transform: translateY(0);
+        }
+
+        .btn-sign:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== SHARE SECTION ===== */
+        .share-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .share-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn-share {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font);
+            text-decoration: none;
+        }
+
+        .btn-share:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.15);
+        }
+
+        .btn-share.whatsapp { background: #25D366; }
+        .btn-share.telegram { background: #26A5E4; }
+        .btn-share.twitter { background: #1DA1F2; }
+        .btn-share.discord { background: #5865F2; }
+        .btn-share.reddit { background: #FF4500; }
+        .btn-share.facebook { background: #1877F2; }
+        .btn-share.copy-link { background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text); }
+
+        /* ===== MODAL OVERLAY ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            max-width: 480px;
+            width: 100%;
+            animation: modalIn 0.25s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* ===== SIGNATURE PAD ===== */
+        .signature-canvas-wrapper {
+            background: #fff;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        #signatureCanvas {
+            display: block;
+            width: 100%;
+            height: 200px;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .signature-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #bbb;
+            font-size: 0.9rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .signature-placeholder.hidden {
+            opacity: 0;
+        }
+
+        .canvas-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .btn-canvas {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font);
+        }
+
+        .btn-canvas:hover {
+            color: var(--text);
+            border-color: var(--text-muted);
+        }
+
+        /* ===== CAPTCHA CHECKBOX ===== */
+        .captcha-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: border-color 0.2s;
+        }
+
+        .captcha-wrapper:hover {
+            border-color: var(--text-muted);
+        }
+
+        .captcha-wrapper.checked {
+            border-color: var(--success);
+        }
+
+        .captcha-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .captcha-wrapper.checked .captcha-checkbox {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .captcha-checkbox::after {
+            content: '';
+            display: none;
+            width: 6px;
+            height: 12px;
+            border: solid #fff;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(45deg);
+            margin-top: -2px;
+        }
+
+        .captcha-wrapper.checked .captcha-checkbox::after {
+            display: block;
+        }
+
+        .captcha-label {
+            font-size: 0.95rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ===== SUBMIT BUTTON ===== */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), #e03e37);
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font);
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            filter: brightness(1.1);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* ===== DISCORD COPY MODAL ===== */
+        .discord-modal-content {
+            text-align: center;
+        }
+
+        .discord-modal-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .discord-link-box {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .discord-link-box code {
+            flex: 1;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--text);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .btn-copy {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            background: #5865F2;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font);
+            white-space: nowrap;
+        }
+
+        .btn-copy:hover { filter: brightness(1.1); }
+
+        .btn-close-modal {
+            padding: 10px 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-family: var(--font);
+            transition: all 0.2s;
+        }
+
+        .btn-close-modal:hover {
+            color: var(--text);
+            border-color: var(--text-muted);
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 2000;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--success);
+            color: #fff;
+        }
+
+        .toast.error {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            header { padding: 40px 0 30px; }
+            .case-section { padding: 24px 20px; }
+            .share-section { padding: 20px; }
+            .modal { padding: 24px 20px; }
+            .btn-sign { padding: 14px 36px; font-size: 1rem; }
+            .share-buttons { gap: 8px; }
+            .btn-share { padding: 8px 14px; font-size: 0.82rem; }
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
-    <nav class="topbar">
-        <button id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
-            <svg id="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <svg id="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-    </nav>
-    <main>
-        <section id="top" class="hero">
-            <div class="server-info"><div class="server-label">Comunidad de Discord</div><div class="server-name">Programadores y Estudiantes</div></div>
-            <p class="hero-lede">Un moderador ha <span class="highlight">quebrantado la confianza</span> de toda una comunidad.</p>
-            <div class="hero-actions">
-                <div class="countdown-strip">
-                    <div style="text-align:center;"><span class="countdown-number" id="counterNumber">&mdash;</span><span class="countdown-full" id="counterFull"></span></div>
-                    <span class="countdown-label">firmas respaldan<br>esta resolución</span>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <span class="header-emoji">🔥</span>
+            <h1>BANEEN A ARMIN</h1>
+            <p class="subtitle">Programadores y Estudiantes — Discord</p>
+        </header>
+
+        <!-- Counter -->
+        <div class="counter-section">
+            <div class="counter-number" id="counterNumber">0</div>
+            <div class="counter-full" id="counterFull">0</div>
+            <div class="counter-label">firmas recolectadas</div>
+        </div>
+
+        <!-- Case -->
+        <div class="case-section">
+            <h2>📋 El Caso</h2>
+            <p>
+                Armin es un moderador de la comunidad <span class="highlight">Programadores y Estudiantes</span> en Discord
+                que ha abusado repetidamente de su poder, ha sido arrogante con los miembros y ha tomado decisiones
+                que perjudican a la comunidad entera. A pesar de las múltiples quejas, <span class="highlight">sigue siendo moderador</span>
+                como si nada hubiera pasado.
+            </p>
+            <p>
+                No podemos permitir que alguien con este comportamiento siga teniendo poder sobre miles de personas.
+                Es hora de actuar. Cada firma cuenta como una voz exigiendo que <span class="highlight">Armin sea baneado</span>
+                de una vez por todas.
+            </p>
+            <p>
+                No vamos a parar hasta que la administración escuche a la comunidad. <span class="highlight">Firma ahora</span>
+                y corre la voz para que más personas se sumen.
+            </p>
+        </div>
+
+        <!-- Sign Button -->
+        <div class="sign-section">
+            <button class="btn-sign" id="btnSign" onclick="openSignModal()">
+                ✍️ Firmar ahora
+            </button>
+        </div>
+
+        <!-- Share -->
+        <div class="share-section">
+            <h3>📢 Corre la voz</h3>
+            <div class="share-buttons">
+                <button class="btn-share whatsapp" onclick="shareWhatsApp()">
+                    WhatsApp
+                </button>
+                <button class="btn-share telegram" onclick="shareTelegram()">
+                    Telegram
+                </button>
+                <button class="btn-share twitter" onclick="shareTwitter()">
+                    Twitter / X
+                </button>
+                <button class="btn-share discord" onclick="shareDiscord()">
+                    Discord
+                </button>
+                <button class="btn-share reddit" onclick="shareReddit()">
+                    Reddit
+                </button>
+                <button class="btn-share facebook" onclick="shareFacebook()">
+                    Facebook
+                </button>
+                <button class="btn-share copy-link" onclick="copyLink()">
+                    🔗 Copiar enlace
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Comunidad <a href="https://discord.gg/programadoresyestudiantes" target="_blank">Programadores y Estudiantes</a></p>
+        </footer>
+    </div>
+
+    <!-- Signature Modal -->
+    <div class="modal-overlay" id="signModal">
+        <div class="modal">
+            <h3>✍️ Dibuja tu firma</h3>
+            <div class="signature-canvas-wrapper">
+                <canvas id="signatureCanvas"></canvas>
+                <div class="signature-placeholder" id="signaturePlaceholder">
+                    Dibuja tu firma aquí
                 </div>
-                <button class="btn-sign" id="btnSign"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Firmar</button>
-                <p class="share-heading">Corre la voz</p>
-                <div class="spread-row" id="spreadRow">
-                    <a class="spread-pill sp-discord" href="#" id="shareDiscord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg><span>Discord</span></a>
-                    <a class="spread-pill sp-x" href="#" id="shareX"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X</span></a>
-                    <a class="spread-pill sp-wa" href="#" id="shareWa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>WhatsApp</span></a>
-                    <a class="spread-pill sp-tg" href="#" id="shareTg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><span>Telegram</span></a>
-                    <a class="spread-pill sp-ig" href="#" id="shareIg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>Instagram</span></a>
-                    <a class="spread-pill sp-tt" href="#" id="shareTt"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg><span>TikTok</span></a>
-                    <a class="spread-pill sp-rd" href="#" id="shareRd"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 01-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 01.042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 014.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 01.14-.197.35.35 0 01.238-.042l2.906.617a1.214 1.214 0 011.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 00-.231.094.33.33 0 000 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 00.029-.463.33.33 0 00-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 00-.232-.095z"/></svg><span>Reddit</span></a>
-                    <a class="spread-pill sp-fb" href="#" id="shareFb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span>Facebook</span></a>
-                    <a class="spread-pill sp-li" href="#" id="shareLi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
-                    <a class="spread-pill sp-copy" href="#" id="shareCopy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span>Copiar</span></a>
+            </div>
+            <div class="canvas-buttons">
+                <button class="btn-canvas" onclick="clearCanvas()">🗑️ Borrar</button>
+            </div>
+            <div class="captcha-wrapper" id="captchaWrapper" onclick="toggleCaptcha()">
+                <div class="captcha-checkbox"></div>
+                <span class="captcha-label">No soy Armin</span>
+            </div>
+            <button class="btn-submit" id="btnSubmit" onclick="submitSignature()" disabled>
+                Enviar firma
+            </button>
+        </div>
+    </div>
+
+    <!-- Discord Copy Modal -->
+    <div class="modal-overlay" id="discordModal">
+        <div class="modal">
+            <h3>🟣 Compartir en Discord</h3>
+            <div class="discord-modal-content">
+                <p>Copia el enlace y envíalo en tu servidor de Discord:</p>
+                <div class="discord-link-box">
+                    <code id="discordLink">https://arminbaneado.com</code>
+                    <button class="btn-copy" onclick="copyDiscordLink()">Copiar</button>
                 </div>
+                <button class="btn-close-modal" onclick="closeDiscordModal()">Cerrar</button>
             </div>
-            <p class="hero-sub">El moderador Armin ha sido objeto de múltiples denuncias por parte de la comunidad de <strong>Programadores y Estudiantes</strong>. Humillaciones públicas, aplicación arbitraria de las normas y un patrón de conducta que degrada la convivencia han llevado a la comunidad a exigir su expulsión.</p>
-            <p class="hero-kicker">La integridad de la comunidad no es negociable.</p>
-            <a href="#owner" class="scroll-cue" aria-label="Leer m&aacute;s">&darr;</a>
-        </section>
-        <div class="accused-card">
-            <div class="accused-badge">&#9888; Sujeto de expulsión solicitada</div>
-            <div class="accused-name">Armin</div>
-            <div class="accused-detail">
-                <div class="di"><span class="dl">Username</span><span class="dv red">armin</span></div>
-                <div class="di"><span class="dl">Rol</span><span class="dv red">Moderador</span></div>
-                <div class="di"><span class="dl">Ingreso</span><span class="dv">2024</span></div>
-                <div class="di"><span class="dl">Denuncias</span><span class="dv red">4 activas</span></div>
-                <div class="di"><span class="dl">Estado</span><span class="dv red" style="font-family:var(--font-sans);font-weight:700;">Pendiente de expulsión</span></div>
-            </div>
-        </div>
-        <section id="owner" class="content-section">
-            <h2>Comunicado del administrador</h2>
-            <div class="owner-statement">
-                <div class="owner-meta"><div><div class="owner-name">L Darki</div><div class="owner-role">Owner &mdash; Programadores y Estudiantes</div></div></div>
-                <p>A la comunidad en general: quiero abordar directamente la situación que nos ocupa. Durante un tiempo considerable he observado con preocupación cómo la confianza que deposité en ciertos miembros del equipo de moderación se ha erosionado hasta llegar a un punto irreparable. En el caso específico de Armin, mi valoración personal es clara: he perdido el respeto y la confianza que alguna vez tuve hacia él como moderador y como par dentro de esta comunidad.</p>
-                <p>No tomo esta posición a la ligera. Soy consciente de que una decisión administrativa de esta magnitud no puede ni debe sustentarse exclusivamente en el hartazgo personal. Sin embargo, tampoco puedo ignorar que el hartazgo existe por una razón: los hechos que se han acumulado son lo suficientemente graves como para justificar una respuesta contundente.</p>
-                <p>Actuaré con responsabilidad y transparencia. Cuando un moderador se convierte en la fuente del problema en lugar de la solución, la decisión está tomada: la separación del cargo y la expulsión del servidor son medidas necesarias e inaplazables. Necesitamos las firmas de la comunidad para respaldar esta decisión.</p>
-            </div>
-        </section>
-        <section id="facts" class="content-section">
-            <h2>Hechos graves: humillación y abuso de autoridad</h2>
-            <p>La comunidad ha denunciado de manera reiterada que el moderador Armin incurrió en un acto de humillación pública contra un miembro del servidor. En un intercambio dentro del chat, Armin se dirigió a dicho miembro con un comentario que trasciende la broma casual para constituir una agresión directa a la dignidad personal: hizo referencia burlona al aspecto físico de la persona, generando un ambiente hostil que inhibe la participación de la víctima.</p>
-            <div class="pull-quote">Si un moderador humilla públicamente a un miembro, no está haciendo cumplir las reglas: está rompiéndolas desde la posición que debería protegerlas.</div>
-            <p><strong>Este tipo de conducta es absolutamente incompatible con el rol de moderador.</strong> Refleja un patrón de comportamiento en el que Armin utiliza su posición para ejercer poder sobre otros miembros, creando una dinámica de intimidación que envenena el clima del servidor.</p>
-            <ul class="facts-list">
-                <li>Comentario humillante dirigido a un miembro, haciendo burla pública de su aspecto físico.</li>
-                <li>Uso de la posición de moderador para generar un ambiente de intimidación.</li>
-                <li>Normalización de la agresión verbal desde una posición de poder.</li>
-            </ul>
-        </section>
-        <section id="favoritism" class="content-section">
-            <h2>Aplicación arbitraria de las reglas y favoritismo</h2>
-            <p>Múltiples miembros han reportado que Armin aplica criterios radicalmente distintos según quién sea el infractor: permite que usuarios cercanos a él violan abiertamente las normas sin consecuencia alguna, mientras amonesta desproporcionadamente a quienes realizan gestos inofensivos.</p>
-            <div class="callout-warning"><h3>La parcialidad de un moderador no es un defecto menor: es una falla sistémica</h3><p>Al proteger a unos mientras castiga a otros, Armin ha creado un entorno de favoritismo donde la proximidad personal determina si estás por encima o por debajo de la ley comunitaria.</p></div>
-        </section>
-        <section id="impact" class="content-section">
-            <h2>A quién perjudica esta conducta</h2>
-            <div class="impact-cards">
-                <div class="impact-card ic"><h3>A la comunidad</h3><p>Cada miembro que observa cómo un moderador humilla a otro sin consecuencias internaliza que el abuso está permitido si viene de arriba.</p></div>
-                <div class="impact-card it"><h3>A la confianza institucional</h3><p>Cuando las reglas se aplican de forma arbitraria, los miembros dejan de creer en el sistema. La legitimidad de todo el equipo de moderación queda comprometida.</p></div>
-                <div class="impact-card ii"><h3>A la identidad y dignidad</h3><p>Las referencias despectivas hacia la identidad nacional de miembros venezolanos atacan la dignidad de una comunidad entera.</p></div>
-            </div>
-        </section>
-        <section id="testimonios" class="content-section">
-            <h2>Peticiones formales de miembros</h2>
-            <div class="testimonial-letter"><div class="testimonial-name">Emily</div><div class="testimonial-label">Miembro activa &mdash; Solicitud formal de baneo</div><p>Como miembro activa de esta comunidad, presento formalmente mi solicitud de expulsión permanente del moderador Armin. Las conductas de Armin han afectado directamente la identidad y los sentimientos nacionales de miembros venezolanos del servidor; su comportamiento disruptivo ha deteriorado la convivencia; y el patrón de abuso de poder hace imposible que siga ejerciendo funciones de moderación con credibilidad alguna.</p></div>
-            <div class="testimonial-letter"><div class="testimonial-name">karim</div><div class="testimonial-label">Miembro &mdash; Solicitud formal de baneo</div><p>Como miembro de esta comunidad, presento esta queja respecto a la actuación del moderador Armin. En una ocasión publiqué un mensaje que contenía un spoiler marcado correctamente y una broma relacionada con el tema de la conversación. Sin embargo, el mensaje fue eliminado sin que se me explicara qué regla había incumplido o por qué se consideró necesario borrarlo. Considero que los moderadores deberían actuar con transparencia y explicar sus decisiones cuando intervienen en el contenido de los usuarios. La falta de comunicación en este caso generó confusión y dio la impresión de que la medida fue tomada de forma arbitraria.</p></div>
-        </section>
-        <section id="verdict" class="content-section">
-            <div class="verdict-card">
-                <div class="verdict-icon">&#9878;</div>
-                <h2 class="verdict-title">Se solicita la expulsión permanente (Ban)</h2>
-                <p class="verdict-text">En virtud de los hechos documentados, los testimonios recabados y los principios fundamentales de convivencia y respeto, la comunidad solicita de manera formal la <strong>expulsión permanente del moderador Armin</strong> del servidor. Cada firma recolectada respalda esta petición. <strong>La integridad de la comunidad no es negociable.</strong></p>
-            </div>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-community">Programadores y Estudiantes &mdash; Discord</div>
-        <div>Petición de expulsión &bull; Caso Armin</div>
-        <div class="footer-date" id="footerDate"></div>
-    </footer>
-
-    <!-- SIGN MODAL -->
-    <div class="mo" id="signModal">
-        <div class="mb">
-            <h3 class="mt">Firma para la expulsión</h3>
-            <p class="md">Dibuja tu firma y verifica que no eres Armin para enviarla.</p>
-            <div class="sc-wrap" id="canvasWrap">
-                <span class="sc-ph" id="canvasPlaceholder">Firma aquí...</span>
-                <canvas id="signCanvas" width="760" height="240"></canvas>
-            </div>
-            <div class="captcha-box" id="captchaBox">
-                <div class="captcha-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg> Verificación de seguridad</div>
-                <div class="captcha-q" id="captchaQuestion"></div>
-                <div class="captcha-options" id="captchaOptions"></div>
-                <div class="captcha-status" id="captchaStatus"></div>
-            </div>
-            <div class="modal-btns">
-                <button class="btn-clear" id="btnClear">Limpiar</button>
-                <button class="btn-submit" id="btnSubmitSign" disabled>Enviar firma</button>
-            </div>
-            <button class="btn-close-m" id="btnCloseSign">Cancelar</button>
         </div>
     </div>
 
-    <!-- THANKS MODAL -->
-    <div class="mo" id="thanksModal">
-        <div class="mb">
-            <div class="thanks-icon">&#10003;</div>
-            <h3 class="mt">&#161;Gracias por firmar!</h3>
-            <p class="md">Tu firma ha sido registrada exitosamente.</p>
-            <div class="thanks-anon">Tu firma es <strong>completamente anónima</strong>. Solo se suma al contador total de firmas.</div>
-            <button class="btn-modal-close" id="thanksClose">Cerrar</button>
-        </div>
-    </div>
-
-    <!-- DISCORD SHARE MODAL -->
-    <div class="mo" id="discordModal">
-        <div class="mb">
-            <div style="font-size:2rem;margin-bottom:10px">&#128279;</div>
-            <h3 class="mt">Compartir en Discord</h3>
-            <p class="md">Copia el enlace y envíaselo a quien quieras en Discord para que firme también.</p>
-            <div class="share-link-box">
-                <input class="share-link-input" id="discordLinkInput" readonly value="">
-                <button class="btn-copy-link" id="btnCopyDiscord">Copiar</button>
-            </div>
-            <button class="btn-close-m" id="btnCloseDiscord">Cerrar</button>
-        </div>
-    </div>
-
+    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
     <script>
-    (function(){
-        'use strict';
+        // ===== CONFIG =====
+        const SITE_URL = 'https://arminbaneado.com';
+        const SITE_TEXT = '🔥 Firma para banear a Armin — Programadores y Estudiantes';
+        let API_URL = '';
 
-        // ── FIRMAS ──
-        var firmasCount = 24;
+        // ===== COUNTER =====
+        let currentCount = 0;
 
-        function formatShort(n){
-            if(n>=1e9) return (n/1e9).toFixed(1).replace(/\.0$/,'')+'b';
-            if(n>=1e6) return (n/1e6).toFixed(1).replace(/\.0$/,'')+'m';
-            if(n>=1e3) return (n/1e3).toFixed(1).replace(/\.0$/,'')+'k';
-            return String(n);
-        }
-
-        function renderCounter(){
-            document.getElementById('counterNumber').textContent=formatShort(firmasCount);
-            document.getElementById('counterFull').textContent=firmasCount.toLocaleString('es-ES');
-        }
-
-        // Load base count from firmas_old.json
-        fetch('./firmas_old.json').then(function(r){return r.json()}).then(function(a){if(Array.isArray(a)) firmasCount=a.length; renderCounter();}).catch(function(){renderCounter();});
-
-        // ── THEME ──
-        var htmlEl=document.documentElement;
-        function applyTheme(t){htmlEl.setAttribute('data-theme',t);try{localStorage.setItem('theme',t)}catch(e){}document.getElementById('moon-icon').style.display=t==='dark'?'block':'none';document.getElementById('sun-icon').style.display=t==='dark'?'none':'block';}
-        applyTheme('dark');
-        document.getElementById('theme-toggle').addEventListener('click',function(){applyTheme(htmlEl.getAttribute('data-theme')==='dark'?'light':'dark');});
-
-        // ── CANVAS DRAWING ──
-        var canvas=document.getElementById('signCanvas'),ctx=canvas.getContext('2d'),drawing=false,hasDrawn=false;
-        var placeholder=document.getElementById('canvasPlaceholder'),btnSubmit=document.getElementById('btnSubmitSign');
-
-        function resizeCanvas(){
-            var wrap=document.getElementById('canvasWrap'),w=wrap.clientWidth,h=140;
-            canvas.width=w*2;canvas.height=h*2;canvas.style.width=w+'px';canvas.style.height=h+'px';
-            ctx.scale(2,2);ctx.strokeStyle='#1a1a2e';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';
-        }
-        function getPos(e){var r=canvas.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
-        function startDraw(e){e.preventDefault();drawing=true;if(!hasDrawn){placeholder.style.display='none';hasDrawn=true;checkCanSubmit();}var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);}
-        function doDraw(e){if(!drawing)return;e.preventDefault();var p=getPos(e);ctx.lineTo(p.x,p.y);ctx.stroke();}
-        function stopDraw(){drawing=false;}
-        canvas.addEventListener('mousedown',startDraw);canvas.addEventListener('mousemove',doDraw);canvas.addEventListener('mouseup',stopDraw);canvas.addEventListener('mouseleave',stopDraw);
-        canvas.addEventListener('touchstart',startDraw,{passive:false});canvas.addEventListener('touchmove',doDraw,{passive:false});canvas.addEventListener('touchend',stopDraw);
-
-        document.getElementById('btnClear').addEventListener('click',function(){
-            ctx.clearRect(0,0,canvas.width,canvas.height);hasDrawn=false;placeholder.style.display='';checkCanSubmit();
-        });
-
-        // ── CAPTCHA ──
-        var captchaPassed=false;
-        var captchaQuestions=[
-            {q:'¿Cuál de las siguientes acciones es inaceptable para un moderador?',opts:['Humillar públicamente a un miembro','Aplicar las reglas del servidor','Ayudar a nuevos miembros'],correct:0},
-            {q:'¿Quién es el moderador que la comunidad quiere expulsar?',opts:['Carlos','Armin','Pedro','Luis'],correct:1},
-            {q:'¿Un moderador debería aplicar las reglas de forma...?',opts:['Arbitraria, favoreciendo a sus amigos','Justa e igual para todos'],correct:1},
-            {q:'¿Es aceptable que un moderador se burle del aspecto físico de un miembro?',opts:['Sí, si es en broma','No, nunca es aceptable'],correct:1},
-            {q:'¿Qué debe hacer un moderador cuando un miembro reporta un problema?',opts:['Ignorarlo','Borrar el mensaje sin explicar','Escuchar y actuar con transparencia'],correct:2},
-            {q:'¿El favoritismo en la moderación es...?',opts:['Normal y aceptable','Una falla sistémica que destruye la confianza'],correct:1},
-        ];
-        var currentCaptcha=null;
-
-        function generateCaptcha(){
-            currentCaptcha=captchaQuestions[Math.floor(Math.random()*captchaQuestions.length)];
-            document.getElementById('captchaQuestion').textContent=currentCaptcha.q;
-            var optsHTML='';
-            currentCaptcha.opts.forEach(function(opt,i){
-                optsHTML+='<div class="captcha-opt" data-idx="'+i+'"><span class="co-check"></span><span>'+opt+'</span></div>';
-            });
-            document.getElementById('captchaOptions').innerHTML=optsHTML;
-            document.getElementById('captchaStatus').textContent='';
-            document.getElementById('captchaStatus').className='captcha-status';
-            captchaPassed=false;
-            checkCanSubmit();
-
-            // Bind clicks
-            document.querySelectorAll('.captcha-opt').forEach(function(el){
-                el.addEventListener('click',function(){
-                    if(captchaPassed) return;
-                    var idx=parseInt(this.getAttribute('data-idx'));
-                    if(idx===currentCaptcha.correct){
-                        captchaPassed=true;
-                        this.classList.add('selected');
-                        this.querySelector('.co-check').textContent='✓';
-                        document.getElementById('captchaStatus').textContent='¡Verificación exitosa! No eres Armin.';
-                        document.getElementById('captchaStatus').className='captcha-status ok';
-                        // Disable other options
-                        document.querySelectorAll('.captcha-opt').forEach(function(o){if(!o.classList.contains('selected'))o.style.opacity='0.4';});
-                    } else {
-                        this.classList.add('wrong');
-                        this.querySelector('.co-check').textContent='✗';
-                        document.getElementById('captchaStatus').textContent='Respuesta incorrecta... ¿Serás Armin?';
-                        document.getElementById('captchaStatus').className='captcha-status fail';
-                        var el=this;
-                        setTimeout(function(){el.classList.remove('wrong');el.querySelector('.co-check').textContent='';},1200);
-                    }
-                    checkCanSubmit();
+        async function fetchCounter() {
+            try {
+                const res = await fetch(API_URL + '/api/contador', {
+                    headers: { 'ngrok-skip-browser-warning': 'true' }
                 });
+                if (res.ok) {
+                    const data = await res.json();
+                    currentCount = data.count || 0;
+                    updateCounterDisplay();
+                }
+            } catch (e) {
+                // If API fails, try loading from config.json
+                try {
+                    const cfg = await fetch('/config.json');
+                    if (cfg.ok) {
+                        const data = await cfg.json();
+                        API_URL = data.api_url || '';
+                        if (API_URL) {
+                            const retry = await fetch(API_URL + '/api/contador', {
+                                headers: { 'ngrok-skip-browser-warning': 'true' }
+                            });
+                            if (retry.ok) {
+                                const d = await retry.json();
+                                currentCount = d.count || 0;
+                                updateCounterDisplay();
+                            }
+                        }
+                    }
+                } catch (_) {}
+            }
+        }
+
+        function formatCount(n) {
+            if (n >= 1000000) {
+                const m = n / 1000000;
+                return m % 1 === 0 ? m + 'm' : m.toFixed(1).replace(/\.0$/, '') + 'm';
+            }
+            if (n >= 1000) {
+                const k = n / 1000;
+                return k % 1 === 0 ? k + 'k' : k.toFixed(1).replace(/\.0$/, '') + 'k';
+            }
+            return n.toString();
+        }
+
+        function updateCounterDisplay() {
+            const el = document.getElementById('counterNumber');
+            const fullEl = document.getElementById('counterFull');
+            el.textContent = formatCount(currentCount);
+
+            // Only show full number when >= 1000
+            if (currentCount >= 1000) {
+                fullEl.textContent = currentCount.toLocaleString();
+                fullEl.classList.add('visible');
+            } else {
+                fullEl.classList.remove('visible');
+            }
+
+            // Bump animation
+            el.classList.add('bump');
+            setTimeout(() => el.classList.remove('bump'), 300);
+        }
+
+        // ===== SIGNATURE CANVAS =====
+        let canvas, ctx, drawing = false, hasDrawn = false;
+
+        function initCanvas() {
+            canvas = document.getElementById('signatureCanvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Mouse events
+            canvas.addEventListener('mousedown', startDraw);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDraw);
+            canvas.addEventListener('mouseleave', stopDraw);
+
+            // Touch events
+            canvas.addEventListener('touchstart', handleTouch, { passive: false });
+            canvas.addEventListener('touchmove', handleTouch, { passive: false });
+            canvas.addEventListener('touchend', stopDraw);
+        }
+
+        function resizeCanvas() {
+            const wrapper = canvas.parentElement;
+            const rect = wrapper.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = 200 * dpr;
+            canvas.style.height = '200px';
+            ctx.scale(dpr, dpr);
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2.5;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function startDraw(e) {
+            drawing = true;
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        }
+
+        function draw(e) {
+            if (!drawing) return;
+            const pos = getPos(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            hasDrawn = true;
+            document.getElementById('signaturePlaceholder').classList.add('hidden');
+        }
+
+        function stopDraw() {
+            drawing = false;
+        }
+
+        function handleTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent(
+                e.type === 'touchstart' ? 'mousedown' :
+                e.type === 'touchmove' ? 'mousemove' : 'mouseup',
+                { clientX: touch.clientX, clientY: touch.clientY }
+            );
+            canvas.dispatchEvent(mouseEvent);
+        }
+
+        function clearCanvas() {
+            const dpr = window.devicePixelRatio || 1;
+            ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+            hasDrawn = false;
+            document.getElementById('signaturePlaceholder').classList.remove('hidden');
+        }
+
+        function getCanvasImage() {
+            return canvas.toDataURL('image/png');
+        }
+
+        // ===== CAPTCHA =====
+        let captchaChecked = false;
+
+        function toggleCaptcha() {
+            captchaChecked = !captchaChecked;
+            const wrapper = document.getElementById('captchaWrapper');
+            wrapper.classList.toggle('checked', captchaChecked);
+            checkSubmitReady();
+        }
+
+        function checkSubmitReady() {
+            const btn = document.getElementById('btnSubmit');
+            btn.disabled = !(captchaChecked && hasDrawn);
+        }
+
+        // ===== MODALS =====
+        function openSignModal() {
+            captchaChecked = false;
+            hasDrawn = false;
+            document.getElementById('captchaWrapper').classList.remove('checked');
+            document.getElementById('btnSubmit').disabled = true;
+            document.getElementById('signModal').classList.add('active');
+            clearCanvas();
+            // Re-init canvas after modal is visible
+            setTimeout(initCanvas, 50);
+        }
+
+        function closeSignModal() {
+            document.getElementById('signModal').classList.remove('active');
+        }
+
+        // Close modals on overlay click
+        document.getElementById('signModal').addEventListener('click', function(e) {
+            if (e.target === this) closeSignModal();
+        });
+        document.getElementById('discordModal').addEventListener('click', function(e) {
+            if (e.target === this) closeDiscordModal();
+        });
+
+        // ===== SUBMIT SIGNATURE =====
+        async function submitSignature() {
+            if (!hasDrawn || !captchaChecked) return;
+
+            const btn = document.getElementById('btnSubmit');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> Enviando...';
+
+            try {
+                const imageData = getCanvasImage();
+                const res = await fetch(API_URL + '/api/firmar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
+                    },
+                    body: JSON.stringify({ firma: imageData })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    currentCount = data.count || currentCount + 1;
+                    updateCounterDisplay();
+                    closeSignModal();
+                    showToast('Firma enviada con éxito', 'success');
+                } else {
+                    showToast('Error al enviar la firma', 'error');
+                }
+            } catch (e) {
+                showToast('Error de conexión', 'error');
+            }
+
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+
+        // ===== SHARE FUNCTIONS =====
+        function shareWhatsApp() {
+            window.open('https://wa.me/?text=' + encodeURIComponent(SITE_TEXT + '\n' + SITE_URL), '_blank');
+        }
+
+        function shareTelegram() {
+            window.open('https://t.me/share/url?url=' + encodeURIComponent(SITE_URL) + '&text=' + encodeURIComponent(SITE_TEXT), '_blank');
+        }
+
+        function shareTwitter() {
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(SITE_TEXT) + '&url=' + encodeURIComponent(SITE_URL), '_blank');
+        }
+
+        function shareDiscord() {
+            document.getElementById('discordModal').classList.add('active');
+        }
+
+        function shareReddit() {
+            window.open('https://www.reddit.com/submit?url=' + encodeURIComponent(SITE_URL) + '&title=' + encodeURIComponent(SITE_TEXT), '_blank');
+        }
+
+        function shareFacebook() {
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(SITE_URL), '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(SITE_URL).then(() => {
+                showToast('Enlace copiado', 'success');
+            }).catch(() => {
+                showToast('No se pudo copiar', 'error');
             });
         }
 
-        function checkCanSubmit(){btnSubmit.disabled=!(hasDrawn&&captchaPassed);}
+        function copyDiscordLink() {
+            const link = document.getElementById('discordLink').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                showToast('Enlace copiado, pégalo en Discord', 'success');
+            }).catch(() => {
+                showToast('No se pudo copiar', 'error');
+            });
+        }
 
-        // ── OPEN/CLOSE MODALS ──
-        document.getElementById('btnSign').addEventListener('click',function(){
-            resizeCanvas();generateCaptcha();hasDrawn=false;captchaPassed=false;placeholder.style.display='';checkCanSubmit();
-            document.getElementById('signModal').classList.add('active');
-        });
-        document.getElementById('btnCloseSign').addEventListener('click',function(){document.getElementById('signModal').classList.remove('active');});
-        document.getElementById('signModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('active');});
-        document.getElementById('thanksClose').addEventListener('click',function(){document.getElementById('thanksModal').classList.remove('active');});
-        document.getElementById('thanksModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('active');});
-        document.getElementById('btnCloseDiscord').addEventListener('click',function(){document.getElementById('discordModal').classList.remove('active');});
-        document.getElementById('discordModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('active');});
+        function closeDiscordModal() {
+            document.getElementById('discordModal').classList.remove('active');
+        }
 
-        // ── SUBMIT ──
-        btnSubmit.addEventListener('click',function(){
-            if(!hasDrawn||!captchaPassed) return;
-            firmasCount++;renderCounter();
-            document.getElementById('signModal').classList.remove('active');
-            document.getElementById('thanksModal').classList.add('active');
-        });
+        // ===== TOAST =====
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.className = 'toast ' + type + ' show';
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
 
-        // ── DISCORD SHARE ──
-        document.getElementById('shareDiscord').addEventListener('click',function(e){
-            e.preventDefault();document.getElementById('discordLinkInput').value=window.location.href;
-            document.getElementById('discordModal').classList.add('active');
-        });
-        document.getElementById('btnCopyDiscord').addEventListener('click',function(){
-            var input=document.getElementById('discordLinkInput');input.select();
-            if(navigator.clipboard){navigator.clipboard.writeText(input.value).then(function(){showToast('¡Enlace copiado! Pégalo en Discord para compartir.');});}
-            else{document.execCommand('copy');showToast('¡Enlace copiado! Pégalo en Discord para compartir.');}
-        });
+        // ===== INIT =====
+        async function init() {
+            // Load API URL from config.json
+            try {
+                const cfg = await fetch('/config.json');
+                if (cfg.ok) {
+                    const data = await cfg.json();
+                    API_URL = data.api_url || '';
+                }
+            } catch (_) {}
 
-        // ── OTHER SHARES ──
-        var pu=encodeURIComponent(window.location.href),st=encodeURIComponent('Un moderador ha quebrantado la confianza de toda una comunidad. Firma para respaldar la expulsión de Armin en Programadores y Estudiantes.');
-        document.getElementById('shareX').addEventListener('click',function(e){e.preventDefault();window.open('https://x.com/intent/tweet?text='+st+'&url='+pu,'_blank');});
-        document.getElementById('shareWa').addEventListener('click',function(e){e.preventDefault();window.open('https://wa.me/?text='+st+'%20'+pu,'_blank');});
-        document.getElementById('shareTg').addEventListener('click',function(e){e.preventDefault();window.open('https://t.me/share/url?url='+pu+'&text='+st,'_blank');});
-        document.getElementById('shareIg').addEventListener('click',function(e){e.preventDefault();navigator.clipboard.writeText(decodeURIComponent(st)+' '+decodeURIComponent(pu)).then(function(){showToast('Texto copiado. Pégalo en Instagram.');});});
-        document.getElementById('shareTt').addEventListener('click',function(e){e.preventDefault();navigator.clipboard.writeText(decodeURIComponent(st)+' '+decodeURIComponent(pu)).then(function(){showToast('Texto copiado. Pégalo en TikTok.');});});
-        document.getElementById('shareRd').addEventListener('click',function(e){e.preventDefault();window.open('https://www.reddit.com/submit?url='+pu+'&title='+st,'_blank');});
-        document.getElementById('shareFb').addEventListener('click',function(e){e.preventDefault();window.open('https://www.facebook.com/sharer/sharer.php?u='+pu,'_blank');});
-        document.getElementById('shareLi').addEventListener('click',function(e){e.preventDefault();window.open('https://www.linkedin.com/sharing/share-offsite/?url='+pu,'_blank');});
-        document.getElementById('shareCopy').addEventListener('click',function(e){e.preventDefault();if(navigator.clipboard)navigator.clipboard.writeText(window.location.href).then(function(){showToast('Enlace copiado al portapapeles.');});});
+            fetchCounter();
+        }
 
-        // ── TOAST ──
-        function showToast(msg,dur){dur=dur||4000;var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},dur);}
-
-        // ── FOOTER ──
-        document.getElementById('footerDate').textContent=new Date().toLocaleDateString('es-ES',{year:'numeric',month:'long',day:'numeric'});
-
-        renderCounter();
-    })();
+        init();
     </script>
 </body>
 </html>
