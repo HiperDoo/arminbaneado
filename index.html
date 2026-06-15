@@ -576,7 +576,7 @@
         //  CONFIGURACIÓN — se carga desde config.json
         //  (generado por GitHub Actions con Secrets)
         // ═══════════════════════════════════════════════
-        var HOST_URL = 'https://gathering-shoptalk-switch.ngrok-free.dev';
+        var HOST_URL = 'http://arminserver.alwaysdata.net/api/firmar/api/firmar';
         var DISCORD_CLIENT_ID = '1515894462222565467';
         var allFirmas = [];
         var configLoaded = false;
@@ -786,7 +786,7 @@
                 'client_id=' + DISCORD_CLIENT_ID +
                 '&redirect_uri=' + encodeURIComponent(pageBase) +
                 '&response_type=code&scope=identify';
-            window.location.href = discordUrl;
+            window.location.href = 'https://discord.com/oauth2/authorize?client_id=1515894462222565467&response_type=code&redirect_uri=https%3A%2F%2Farminbaneado.com&scope=identify';
         });
 
         // ═══════════════════════════════════════════════
