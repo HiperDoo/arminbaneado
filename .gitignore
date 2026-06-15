@@ -1,0 +1,4 @@
+node_modules/
+.env
+assets/avatars/*.png
+!assets/avatars/default.png

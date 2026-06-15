@@ -1,0 +1,81 @@
+# ============================================================
+# Deploy — Resolución Caso Armin
+#
+# Todas las credenciales se leen desde GitHub Secrets
+# (Settings → Secrets and variables → Actions)
+#
+# Secrets necesarios:
+#   DISCORD_CLIENT_ID       — Client ID de la OAuth App de Discord
+#   DISCORD_CLIENT_SECRET   — Client Secret de la OAuth App de Discord
+#   DISCORD_REDIRECT_URI    — URI de callback (ej: https://tudominio.com/api/firmar/callback)
+#   DISCORD_BOT_TOKEN       — Token del bot de Discord (opcional)
+#   DEPLOY_HOST             — Host del servidor (ej: tudominio.com)
+#   DEPLOY_USER             — Usuario SSH para deploy
+#   DEPLOY_SSH_KEY          — Clave SSH privada para deploy
+#   DEPLOY_PATH             — Ruta remota donde se despliega (ej: /var/www/caso-armin)
+# ============================================================
+
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --production
+
+      - name: Create .env file from GitHub Secrets
+        run: |
+          cat > .env << 'ENVEOF'
+          DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }}
+          DISCORD_CLIENT_SECRET=${{ secrets.DISCORD_CLIENT_SECRET }}
+          DISCORD_REDIRECT_URI=${{ secrets.DISCORD_REDIRECT_URI }}
+          DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }}
+          PORT=3000
+          AVATAR_DIR=./assets/avatars
+          ENVEOF
+          echo "✅ .env created from GitHub Secrets"
+
+      - name: Ensure avatars directory exists
+        run: mkdir -p assets/avatars
+
+      - name: Lint check
+        run: npx eslint api/server.js || true
+
+      - name: Deploy via SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          source: "."
+          target: ${{ secrets.DEPLOY_PATH }}
+          strip_components: 0
+
+      - name: Restart service via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            npm ci --production
+            mkdir -p assets/avatars
+            pm2 restart caso-armin || pm2 start api/server.js --name caso-armin
+            echo "🟢 Deployed successfully"
