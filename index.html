@@ -127,6 +127,7 @@
         }
         .btn-sign:hover { transform: translateY(-2px); box-shadow: 0 6px 24px var(--accent-red-glow); filter: brightness(1.1); text-decoration: none; color: #fff; }
         .btn-sign:active { transform: translateY(0); }
+        .btn-sign:disabled { opacity: 0.5; cursor: not-allowed; transform: none; filter: none; }
         .btn-sign svg { width: 16px; height: 16px; }
 
         .share-heading { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin: 18px 0 10px; text-align: center; }
@@ -236,7 +237,7 @@
         .callout-warning h3 { color: var(--accent-red); font-size: 1rem; margin-bottom: 10px; }
         .callout-warning p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 6px; }
 
-        /* ===== AUTO-SCROLLING CAROUSEL (sin flechas, sin contenedor) ===== */
+        /* ===== AUTO-SCROLLING CAROUSEL (sin flechas) ===== */
         .sig-carousel-section {
             overflow: hidden; margin: 0 0 16px;
             mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
@@ -375,7 +376,6 @@
         <!-- ===== HERO ===== -->
         <section id="top" class="hero">
             <div class="server-logo-area">
-                <!-- REEMPLAZAR: poner <img src="/assets/server-logo.png" alt="Logo"> -->
                 <div class="server-logo-placeholder" id="serverLogo" title="Logo del servidor">
                     <span>&#128187;</span>
                 </div>
@@ -389,17 +389,14 @@
 
             <div class="hero-actions">
                 <div class="countdown-strip">
-                    <span class="countdown-number" id="counterNumber">—</span>
+                    <span class="countdown-number" id="counterNumber">&mdash;</span>
                     <span class="countdown-label">firmas respaldan<br>esta resolución</span>
                 </div>
 
-                <!-- El href se configura dinámicamente desde JS con el client_id del servidor -->
-                <a class="btn-sign" id="btnSign"
-                   href="#"
-                   target="_self">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <button class="btn-sign" id="btnSign" disabled>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
                     Firmar con Discord
-                </a>
+                </button>
 
                 <p class="share-heading">Corre la voz</p>
                 <div class="spread-row" id="spreadRow">
@@ -433,7 +430,6 @@
 
         <!-- ===== ACCUSED CARD ===== -->
         <div class="accused-card">
-            <!-- REEMPLAZAR: poner <img src="/assets/armin-photo.png" alt="Armin"> -->
             <div class="accused-photo" id="accusedPhoto" title="Foto de Armin">
                 <span class="placeholder-icon">&#128100;</span>
             </div>
@@ -441,8 +437,7 @@
                 <div class="accused-badge">&#9888; Sujeto de expulsión</div>
                 <div class="accused-name">Armin</div>
                 <div class="accused-detail">
-                    <div class="detail-item"><span class="detail-label">Username</span><span class="detail-value red" id="accusedUsername">armin</span></div>
-                    <div class="detail-item"><span class="detail-label">User ID</span><span class="detail-value" id="accusedUserId">000000000000</span></div>
+                    <div class="detail-item"><span class="detail-label">Username</span><span class="detail-value red">armin</span></div>
                     <div class="detail-item"><span class="detail-label">Rol</span><span class="detail-value red">Moderador (suspendido)</span></div>
                     <div class="detail-item"><span class="detail-label">Ingreso</span><span class="detail-value">2024</span></div>
                     <div class="detail-item"><span class="detail-label">Denuncias</span><span class="detail-value red">4 activas</span></div>
@@ -456,7 +451,6 @@
             <h2>Comunicado del administrador</h2>
             <div class="owner-statement">
                 <div class="owner-meta">
-                    <!-- REEMPLAZAR: poner <img src="/assets/avatars/l_darki.png"> dentro de .owner-avatar -->
                     <div class="owner-avatar">LD</div>
                     <div><div class="owner-name">L Darki</div><div class="owner-role">Owner &mdash; Programadores y Estudiantes</div></div>
                 </div>
@@ -514,7 +508,6 @@
             <h2>Petición formal de la miembro Emily</h2>
             <div class="emily-letter">
                 <div class="emily-header">
-                    <!-- REEMPLAZAR: poner <img src="/assets/avatars/emily.png"> dentro de .emily-avatar -->
                     <div class="emily-avatar">E</div>
                     <div><div class="emily-name">Emily</div><div class="emily-label">Miembro activa &mdash; Solicitud formal de baneo</div></div>
                 </div>
@@ -526,13 +519,11 @@
         <section id="signatures" class="content-section">
             <h2>Firmas de respaldo</h2>
 
-            <!-- Auto-scrolling carousel (se llena desde JSON) -->
             <p class="sig-carousel-header">Firmantes</p>
             <div class="sig-carousel-section">
                 <div class="sig-carousel-track" id="sigCarouselTrack"></div>
             </div>
 
-            <!-- Signatures list with hover tooltip (se llena desde JSON) -->
             <div class="signatures-wrap">
                 <p class="sig-list-header">Todas las firmas</p>
                 <div class="signatures-list" id="signaturesList"></div>
@@ -560,7 +551,7 @@
     <div class="modal-overlay" id="thanksModal">
         <div class="modal-box">
             <div class="modal-icon" id="thanksIcon">&#10003;</div>
-            <h3 class="modal-title" id="thanksTitle">¡Gracias por firmar!</h3>
+            <h3 class="modal-title" id="thanksTitle">&#161;Gracias por firmar!</h3>
             <p class="modal-desc" id="thanksDesc">Tu firma ha sido registrada exitosamente.</p>
             <div class="modal-user-info" id="thanksUserInfo">
                 <img class="modal-user-avatar" id="thanksAvatar" src="" alt="">
@@ -582,22 +573,13 @@
         'use strict';
 
         // ═══════════════════════════════════════════════
-        //  CONFIGURACIÓN
+        //  CONFIGURACIÓN — se carga desde config.json
+        //  (generado por GitHub Actions con Secrets)
         // ═══════════════════════════════════════════════
-        var API_BASE = window.location.origin;
-        // DISCORD_CLIENT_ID se obtiene del servidor via /api/health
-        // En producción viene de GitHub Secrets → .env → process.env
+        var HOST_URL = '';
         var DISCORD_CLIENT_ID = '';
-        var DISCORD_REDIRECT_URI = API_BASE + '/api/firmar/callback';
-
-        // Obtener client_id del servidor (viene de GitHub Secrets)
-        fetch(API_BASE + '/api/health').then(function(r){ return r.json(); }).then(function(cfg) {
-            if (cfg.discord_configured) {
-                // El servidor ya tiene la config, el callback la usa directamente
-                // Solo necesitamos el client_id para el botón de OAuth
-                DISCORD_CLIENT_ID = cfg.discord_client_id || '';
-            }
-        }).catch(function(){});
+        var allFirmas = [];
+        var configLoaded = false;
 
         // ═══════════════════════════════════════════════
         //  TEMA (siempre oscuro por defecto)
@@ -616,31 +598,26 @@
             try { localStorage.setItem('theme', t); } catch(e) {}
             setThemeIcons(t);
         }
-
-        // Siempre iniciar en oscuro (ignorar preferencia del sistema)
         applyTheme('dark');
-
         themeToggle.addEventListener('click', function() {
             var cur = htmlEl.getAttribute('data-theme');
             applyTheme(cur === 'dark' ? 'light' : 'dark');
         });
 
         // ═══════════════════════════════════════════════
-        //  TIEMPO RELATIVO
+        //  TIEMPO RELATIVO (en español)
         // ═══════════════════════════════════════════════
         function timeAgo(dateStr) {
             var now = new Date();
             var then = new Date(dateStr);
             var diffMs = now - then;
             if (diffMs < 0) diffMs = 0;
-
             var seconds = Math.floor(diffMs / 1000);
             var minutes = Math.floor(seconds / 60);
             var hours = Math.floor(minutes / 60);
             var days = Math.floor(hours / 24);
             var months = Math.floor(days / 30);
             var years = Math.floor(days / 365);
-
             if (years > 0) return 'hace ' + years + (years === 1 ? ' año' : ' años');
             if (months > 0) return 'hace ' + months + (months === 1 ? ' mes' : ' meses');
             if (days > 0) return 'hace ' + days + (days === 1 ? ' día' : ' días');
@@ -650,30 +627,84 @@
         }
 
         // ═══════════════════════════════════════════════
-        //  CARGAR FIRMAS DESDE JSON
+        //  CARGAR CONFIG + FIRMAS
         // ═══════════════════════════════════════════════
-        var allFirmas = [];
-
-        function loadFirmas() {
-            fetch(API_BASE + '/api/firmas')
+        function initApp() {
+            // 1) Cargar config.json (generado por GitHub Actions con Secrets)
+            fetch('./config.json')
                 .then(function(r) { return r.json(); })
-                .then(function(data) {
-                    var oldFirmas = data.firmas_old || [];
-                    var newFirmas = data.firmas || [];
-                    // Combina: las viejas primero, luego las nuevas
-                    allFirmas = oldFirmas.concat(newFirmas);
-                    renderAll();
+                .then(function(cfg) {
+                    HOST_URL = (cfg.host_url || '').replace(/\/+$/, '');
+                    DISCORD_CLIENT_ID = cfg.discord_client_id || '';
+                    configLoaded = true;
+                    enableSignButton();
                 })
                 .catch(function() {
-                    // Fallback: cargar JSONs directamente
-                    Promise.all([
-                        fetch('/firmas_old.json').then(function(r){ return r.json(); }).catch(function(){ return []; }),
-                        fetch('/firmas.json').then(function(r){ return r.json(); }).catch(function(){ return []; })
-                    ]).then(function(results) {
-                        allFirmas = results[0].concat(results[1]);
-                        renderAll();
-                    });
+                    // config.json no existe (local dev o no deployado aún)
+                    console.warn('config.json no encontrado. Botón de firma deshabilitado.');
+                    configLoaded = false;
+                })
+                .finally(function() {
+                    // 2) Cargar firmas siempre, con o sin config
+                    loadFirmas();
                 });
+        }
+
+        function enableSignButton() {
+            var btn = document.getElementById('btnSign');
+            if (DISCORD_CLIENT_ID && HOST_URL) {
+                btn.disabled = false;
+            }
+        }
+
+        function loadFirmas() {
+            // Cargar firmas_old.json local (siempre disponible en GitHub Pages)
+            var oldPromise = fetch('./firmas_old.json')
+                .then(function(r) { return r.json(); })
+                .catch(function() { return []; });
+
+            // Cargar firmas dinámicas del host (puede fallar)
+            var newPromise;
+            if (HOST_URL) {
+                newPromise = fetch(HOST_URL + '/api/firmas', { mode: 'cors' })
+                    .then(function(r) { return r.json(); })
+                    .then(function(d) { return d.firmas || []; })
+                    .catch(function() { return []; });
+            } else {
+                newPromise = Promise.resolve([]);
+            }
+
+            Promise.all([oldPromise, newPromise]).then(function(results) {
+                var oldFirmas = results[0];
+                var newFirmas = results[1];
+                allFirmas = mergeFirmas(oldFirmas, newFirmas);
+                renderAll();
+            });
+        }
+
+        // Deduplicar: si alguien de firmas_old firmó de nuevo por Discord,
+        // la entrada nueva (con avatar real) reemplaza la vieja
+        function mergeFirmas(oldFirmas, newFirmas) {
+            var result = oldFirmas.slice();
+            newFirmas.forEach(function(nf) {
+                var idx = -1;
+                // Buscar por discord_id primero
+                if (nf.discord_id) {
+                    idx = result.findIndex(function(f) { return f.discord_id === nf.discord_id; });
+                }
+                // Luego por username
+                if (idx === -1 && nf.username) {
+                    idx = result.findIndex(function(f) {
+                        return f.username && f.username.toLowerCase() === nf.username.toLowerCase();
+                    });
+                }
+                if (idx !== -1) {
+                    result[idx] = nf; // Reemplazar con la versión actualizada
+                } else {
+                    result.push(nf);
+                }
+            });
+            return result;
         }
 
         function renderAll() {
@@ -686,8 +717,7 @@
         //  CONTADOR
         // ═══════════════════════════════════════════════
         function renderCounter() {
-            var counterNumber = document.getElementById('counterNumber');
-            counterNumber.textContent = allFirmas.length;
+            document.getElementById('counterNumber').textContent = allFirmas.length;
         }
 
         // ═══════════════════════════════════════════════
@@ -696,20 +726,16 @@
         function renderCarousel() {
             var track = document.getElementById('sigCarouselTrack');
             track.innerHTML = '';
-
             if (allFirmas.length === 0) return;
-
-            // Crear items
             var html = '';
             allFirmas.forEach(function(f) {
+                var imgSrc = f.avatar || '/assets/avatars/default.png';
                 html += '<div class="sig-carousel-item">' +
-                    '<img src="' + f.avatar + '" alt="' + f.nombre + '" onerror="this.src=\'/assets/avatars/default.png\'">' +
+                    '<img src="' + imgSrc + '" alt="' + f.nombre + '" onerror="this.src=\'/assets/avatars/default.png\'">' +
                     '<div class="sc-name">' + f.nombre + '</div>' +
                 '</div>';
             });
-
-            // Duplicar para loop infinito
-            track.innerHTML = html + html;
+            track.innerHTML = html + html; // Duplicar para loop infinito
         }
 
         // ═══════════════════════════════════════════════
@@ -718,18 +744,16 @@
         function renderSignaturesList() {
             var list = document.getElementById('signaturesList');
             list.innerHTML = '';
-
-            // Ordenar por fecha (más reciente primero)
             var sorted = allFirmas.slice().sort(function(a, b) {
                 return new Date(b.fecha) - new Date(a.fecha);
             });
-
             sorted.forEach(function(f) {
+                var imgSrc = f.avatar || '/assets/avatars/default.png';
                 var tag = document.createElement('span');
                 tag.className = 'sig-tag';
                 tag.innerHTML = '<span class="at">@</span>' + f.nombre +
                     '<span class="sig-tooltip">' +
-                        '<img class="sig-tooltip-img" src="' + f.avatar + '" alt="" onerror="this.src=\'/assets/avatars/default.png\'">' +
+                        '<img class="sig-tooltip-img" src="' + imgSrc + '" alt="" onerror="this.src=\'/assets/avatars/default.png\'">' +
                         '<div class="sig-tooltip-info">' +
                             '<span class="sig-tooltip-name">@' + f.username + '</span>' +
                             '<span class="sig-tooltip-action">&#10003; Firmó esta resolución</span>' +
@@ -744,16 +768,16 @@
         //  BOTÓN FIRMAR → DISCORD OAUTH
         // ═══════════════════════════════════════════════
         var btnSign = document.getElementById('btnSign');
-
         btnSign.addEventListener('click', function(e) {
             e.preventDefault();
-            if (!DISCORD_CLIENT_ID) {
+            if (!DISCORD_CLIENT_ID || !HOST_URL) {
                 showToast('El sistema de firmas aún no está configurado. Intenta más tarde.');
                 return;
             }
+            var redirectUri = HOST_URL + '/api/firmar/callback';
             var discordUrl = 'https://discord.com/api/oauth2/authorize?' +
                 'client_id=' + DISCORD_CLIENT_ID +
-                '&redirect_uri=' + encodeURIComponent(DISCORD_REDIRECT_URI) +
+                '&redirect_uri=' + encodeURIComponent(redirectUri) +
                 '&response_type=code&scope=identify';
             window.location.href = discordUrl;
         });
@@ -765,21 +789,27 @@
             var params = new URLSearchParams(window.location.search);
             var discordId = params.get('discord_id');
             var username = params.get('username');
-            var avatar = params.get('avatar');  // Ruta local del avatar guardado
+            var avatar = params.get('avatar');
             var action = params.get('action');
             var message = params.get('message');
             var error = params.get('error');
 
             if (error) {
-                showToast('Error al verificar con Discord: ' + error);
+                var errorMessages = {
+                    'no_code': 'No se recibió código de Discord.',
+                    'no_token': 'No se pudo obtener el token de Discord.',
+                    'no_user': 'No se pudieron obtener tus datos de Discord.',
+                    'rate_limit': 'Estás firmando muy rápido. Espera unos segundos.',
+                    'oauth_failed': 'Error al verificar con Discord. Intenta de nuevo.'
+                };
+                showToast(errorMessages[error] || 'Error: ' + error);
                 cleanURL();
                 return;
             }
 
             if (discordId && username) {
                 showThanksModal(username, action, message, avatar);
-                // Recargar firmas por si acaso
-                loadFirmas();
+                loadFirmas(); // Recargar firmas
                 cleanURL();
             }
         }
@@ -801,7 +831,6 @@
         // ═══════════════════════════════════════════════
         function showThanksModal(username, action, message, avatarParam) {
             var modal = document.getElementById('thanksModal');
-            var icon = document.getElementById('thanksIcon');
             var title = document.getElementById('thanksTitle');
             var desc = document.getElementById('thanksDesc');
             var avatarEl = document.getElementById('thanksAvatar');
@@ -809,21 +838,18 @@
             var time = document.getElementById('thanksTime');
 
             if (action === 'actualizada') {
-                icon.textContent = '\u2714';
                 title.textContent = '¡Gracias por firmar otra vez!';
             } else {
-                icon.textContent = '\u2714';
                 title.textContent = '¡Gracias por firmar!';
             }
 
             desc.textContent = message || 'Tu firma ha sido registrada exitosamente.';
 
-            // Prioridad: avatar del parámetro URL (recién guardado) > firma en JSON > default
             var avatarSrc = avatarParam;
-
             if (!avatarSrc) {
-                // Buscar la firma en allFirmas para mostrar info
-                var firma = allFirmas.find(function(f) { return f.username === username || f.discord_id === username; });
+                var firma = allFirmas.find(function(f) {
+                    return f.username === username || f.discord_id === username;
+                });
                 if (firma) {
                     avatarSrc = firma.avatar;
                     uname.textContent = '@' + firma.username;
@@ -840,10 +866,8 @@
             if (avatarSrc) {
                 avatarEl.src = avatarSrc;
                 avatarEl.onerror = function() { this.src = '/assets/avatars/default.png'; };
-                avatarEl.style.display = 'block';
             } else {
                 avatarEl.src = '/assets/avatars/default.png';
-                avatarEl.style.display = 'block';
             }
 
             modal.classList.add('active');
@@ -891,7 +915,7 @@
         // ═══════════════════════════════════════════════
         //  INIT
         // ═══════════════════════════════════════════════
-        loadFirmas();
+        initApp();
         checkDiscordReturn();
 
         // Actualizar tiempos relativos cada 60 segundos

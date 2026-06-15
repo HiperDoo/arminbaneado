@@ -1,4 +1,6 @@
-node_modules/
+config.json
+__pycache__/
+*.pyc
 .env
-assets/avatars/*.png
-!assets/avatars/default.png
+host/firmas.json
+host/assets/
