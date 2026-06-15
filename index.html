@@ -330,13 +330,13 @@
             }
         }).catch(function(){});
 
-        // Refresh counter from API every 30 seconds
+        // Refresh counter from API every 5 seconds (so other users' signatures appear)
         setInterval(function(){
             if(!API_URL) return;
             fetch(API_URL+'/api/contador',{headers:{'ngrok-skip-browser-warning':'true'}}).then(function(r){return r.json()}).then(function(data){
-                if(typeof data.count==='number' && data.count>firmasCount){firmasCount=data.count;renderCounter();}
+                if(typeof data.count==='number' && data.count!==firmasCount){firmasCount=data.count;renderCounter();}
             }).catch(function(){});
-        },30000);
+        },5000);
 
         // ── THEME ──
         var htmlEl=document.documentElement;
@@ -409,7 +409,7 @@
                 if(r.ok) return r.json();
                 throw new Error('Error del servidor');
             }).then(function(data){
-                firmasCount=data.count||firmasCount+1;
+                if(typeof data.count==='number'){firmasCount=data.count}else{firmasCount++}
                 renderCounter();
                 document.getElementById('signModal').classList.remove('active');
                 document.getElementById('thanksModal').classList.add('active');
