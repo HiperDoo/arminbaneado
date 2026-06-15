@@ -25,7 +25,7 @@ import time
 from pathlib import Path
 from urllib.parse import urlencode
 from fastapi import FastAPI, Request, Query
-from fastapi.responses import RedirectResponse, JSONResponse
+from fastapi.responses import RedirectResponse, JSONResponse, FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
@@ -131,7 +131,6 @@ async def get_firmas():
     return {"firmas": read_firmas()}
 
 
-# ─── GET /api/firmar/callback ────────────────────────────────
 @app.get("/api/firmar/callback")
 async def firmar_callback(request: Request, code: str = Query(None)):
     """
@@ -142,10 +141,11 @@ async def firmar_callback(request: Request, code: str = Query(None)):
       3. Obtiene datos del usuario
       4. Descarga y guarda avatar localmente
       5. Registra/actualiza firma en firmas.json
-      6. Redirige a GitHub Pages con parámetros
+      6. Redirige a la aplicación con parámetros
     """
+    redirect_target = HOST_URL if HOST_URL else GITHUB_PAGES_URL
     if not code:
-        return RedirectResponse(f"{GITHUB_PAGES_URL}?error=no_code")
+        return RedirectResponse(f"{redirect_target}?error=no_code")
 
     # Rate limit por IP
     client_ip = (
@@ -153,7 +153,7 @@ async def firmar_callback(request: Request, code: str = Query(None)):
         or (request.client.host if request.client else "unknown")
     )
     if not check_rate_limit(client_ip):
-        return RedirectResponse(f"{GITHUB_PAGES_URL}?error=rate_limit")
+        return RedirectResponse(f"{redirect_target}?error=rate_limit")
 
     try:
         # ── Intercambiar código por token ──
@@ -173,7 +173,7 @@ async def firmar_callback(request: Request, code: str = Query(None)):
 
         if "access_token" not in token_data:
             print(f"⚠️  Token exchange failed: {token_data.get('error', 'unknown')}")
-            return RedirectResponse(f"{GITHUB_PAGES_URL}?error=no_token")
+            return RedirectResponse(f"{redirect_target}?error=no_token")
 
         # ── Obtener datos del usuario ──
         async with httpx.AsyncClient(timeout=10) as client:
@@ -184,7 +184,7 @@ async def firmar_callback(request: Request, code: str = Query(None)):
             user_data = user_resp.json()
 
         if "id" not in user_data:
-            return RedirectResponse(f"{GITHUB_PAGES_URL}?error=no_user")
+            return RedirectResponse(f"{redirect_target}?error=no_user")
 
         # ── Descargar avatar ──
         avatar_path = await download_avatar(
@@ -227,7 +227,7 @@ async def firmar_callback(request: Request, code: str = Query(None)):
         write_firmas(firmas)
         print(f"✅ Firma {action}: @{user_data['username']} ({user_data['id']})")
 
-        # ── Redirigir a GitHub Pages ──
+        # ── Redirigir a la aplicación ──
         params = urlencode(
             {
                 "discord_id": user_data["id"],
@@ -237,11 +237,11 @@ async def firmar_callback(request: Request, code: str = Query(None)):
                 "message": message,
             }
         )
-        return RedirectResponse(f"{GITHUB_PAGES_URL}?{params}")
+        return RedirectResponse(f"{redirect_target}?{params}")
 
     except Exception as e:
         print(f"❌ OAuth error: {e}")
-        return RedirectResponse(f"{GITHUB_PAGES_URL}?error=oauth_failed")
+        return RedirectResponse(f"{redirect_target}?error=oauth_failed")
 
 
 # ─── GET /api/health ─────────────────────────────────────────
@@ -254,6 +254,33 @@ async def health():
         "host_url": HOST_URL,
         "github_pages_url": GITHUB_PAGES_URL,
     }
+
+
+# ─── GET / (Servir index.html) ──────────────────────────────
+@app.get("/", response_class=HTMLResponse)
+async def serve_index():
+    index_path = Path("index.html")
+    if index_path.exists():
+        return FileResponse(index_path)
+    return HTMLResponse(content="<h1>Resolución Caso Armin</h1><p>El frontend index.html no se encuentra en el directorio raíz del servidor.</p>", status_code=404)
+
+
+# ─── GET /config.json (Configuración dinámica para el frontend) ─
+@app.get("/config.json")
+async def serve_config():
+    return {
+        "host_url": HOST_URL if HOST_URL else f"http://arminbaneado.com",
+        "discord_client_id": DISCORD_CLIENT_ID
+    }
+
+
+# ─── GET /firmas_old.json (Servir firmas antiguas) ────────────
+@app.get("/firmas_old.json")
+async def serve_firmas_old():
+    path = Path("firmas_old.json")
+    if path.exists():
+        return FileResponse(path)
+    return JSONResponse(content=[])
 
 
 # ─── Archivos estáticos (avatares) ──────────────────────────
