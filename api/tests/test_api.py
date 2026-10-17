@@ -311,3 +311,22 @@ def test_ip_endpoint_distinguishes_clients(client):
     a = client.get("/api/ip", headers={"x-forwarded-for": "203.0.113.1, fd00::7:5f56"}).json()["id"]
     b = client.get("/api/ip", headers={"x-forwarded-for": "203.0.113.2, fd00::7:5f56"}).json()["id"]
     assert a != b and len(a) == 8
+
+
+def test_client_ip_prefers_x_real_ip_from_alwaysdata():
+    # Lo que se vio en producción: X-Real-IP real y X-Forwarded-For puesto por el cliente.
+    assert _ip_for({"x-real-ip": "198.51.100.25"}) == "198.51.100.25"
+    assert _ip_for({"x-real-ip": "198.51.100.25", "x-forwarded-for": "8.8.8.8"}) == "198.51.100.25"
+    # Si X-Real-IP falta o es interna, se usa la cadena de X-Forwarded-For.
+    assert _ip_for({"x-real-ip": "::1", "x-forwarded-for": "203.0.113.4"}) == "203.0.113.4"
+
+
+def test_signature_limits_are_per_real_ip(client):
+    """Dos personas detrás del mismo proxy ya no comparten límites."""
+    h1 = {"x-real-ip": "198.51.100.30"}
+    h2 = {"x-real-ip": "198.51.100.31"}
+    for headers, device, seed in ((h1, "device-x001", 61), (h2, "device-x002", 62)):
+        nonce = client.get("/api/desafio", headers=headers).json()["nonce"]
+        body = {"strokes": human_strokes(seed=seed, shift=(seed - 61) * 0.2), "turnstile_token": f"ok:{nonce}",
+                "nonce": nonce, "device_id": device}
+        assert client.post("/api/firmar", json=body, headers=headers).status_code in (200, 202)

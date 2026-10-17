@@ -141,21 +141,6 @@ def create_app(settings: Settings | None = None, http_client: httpx.AsyncClient 
     async def health():
         return {"status": "ok"}
 
-    @app.get("/api/debug/ip")
-    async def debug_ip(request: Request):
-        """TEMPORAL: muestra cómo llegan las cabeceras de IP (todas las apariciones) para
-        ajustar la detección detrás del proxy del hosting. Cada uno solo ve lo suyo."""
-        throttle(f"ipdebug:{ip_of(request)}", 10, 60, "Demasiadas consultas. Espera un momento.")
-        names = {b"x-forwarded-for", b"x-real-ip", b"forwarded", b"via", b"x-client-ip",
-                 b"x-forwarded", b"forwarded-for", b"true-client-ip", b"cf-connecting-ip", b"x-cluster-client-ip"}
-        seen: dict[str, list[str]] = {}
-        for k, v in request.scope.get("headers", []):
-            if k.lower() in names:
-                seen.setdefault(k.decode("latin-1").lower(), []).append(v.decode("latin-1"))
-        client = request.scope.get("client")
-        return JSONResponse({"client": client[0] if client else None, "headers": seen, "resolved_id": antispam.anon(ip_of(request), settings.ip_salt)[:8]},
-                            headers={"Cache-Control": "no-store"})
-
     @app.get("/api/ip")
     async def mi_ip(request: Request):
         """Diagnóstico: un identificador corto y anónimo de cómo te ve la API.

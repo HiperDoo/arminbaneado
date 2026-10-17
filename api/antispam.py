@@ -25,12 +25,24 @@ def _is_internal(addr: ipaddress._BaseAddress) -> bool:
 def client_ip(request: Request, trusted_hops: int = 1) -> str:
     """IP real del visitante detrás de los proxies del hosting.
 
-    Cada proxy AÑADE a la derecha de X-Forwarded-For la IP que le habla. Se recorre la
+    Primero X-Real-IP (la pone el proxy de alwaysdata y no se puede falsificar desde fuera).
+    Si no viene: cada proxy AÑADE a la derecha de X-Forwarded-For la IP que le habla. Se recorre la
     cadena de derecha a izquierda saltando las direcciones internas del hosting (alwaysdata
     usa varias, p. ej. fd00::/8) y se toma la primera externa: esa la añadió un proxy propio.
     Lo que el cliente escriba más a la izquierda se ignora, porque lo puede falsificar.
     `trusted_hops` se conserva por compatibilidad con la configuración anterior.
     """
+    # alwaysdata (alproxy) escribe la IP real en X-Real-IP y sobrescribe lo que mande el cliente;
+    # en cambio X-Forwarded-For lo deja pasar tal cual, así que solo sirve como respaldo.
+    real = request.headers.get("x-real-ip", "").strip()
+    if real:
+        try:
+            addr = ipaddress.ip_address(real.strip("[]"))
+            if not _is_internal(addr):
+                return str(addr.ipv4_mapped or addr) if isinstance(addr, ipaddress.IPv6Address) else str(addr)
+        except ValueError:
+            pass
+
     chain = [p.strip() for p in request.headers.get("x-forwarded-for", "").split(",") if p.strip()]
     if request.client and request.client.host:
         chain.append(request.client.host)
