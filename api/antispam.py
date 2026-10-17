@@ -9,16 +9,38 @@ from collections import deque
 from fastapi import Request
 
 
-def client_ip(request: Request, trusted_hops: int) -> str:
-    """El proxy de confianza ANADE la IP que ve al final de X-Forwarded-For.
-    Lo que el cliente escriba al principio se ignora, porque lo puede falsificar."""
-    forwarded = [p.strip() for p in request.headers.get("x-forwarded-for", "").split(",") if p.strip()]
-    if trusted_hops > 0 and len(forwarded) >= trusted_hops:
-        candidate = forwarded[-trusted_hops]
+# Redes que solo usan los proxies del hosting, nunca un visitante real.
+_INTERNAL_NETS = [ipaddress.ip_network(n) for n in (
+    "127.0.0.0/8", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "169.254.0.0/16", "100.64.0.0/10",
+    "::1/128", "fc00::/7", "fe80::/10",
+)]
+
+
+def _is_internal(addr: ipaddress._BaseAddress) -> bool:
+    if isinstance(addr, ipaddress.IPv6Address) and addr.ipv4_mapped:
+        addr = addr.ipv4_mapped
+    return any(addr.version == n.version and addr in n for n in _INTERNAL_NETS)
+
+
+def client_ip(request: Request, trusted_hops: int = 1) -> str:
+    """IP real del visitante detrás de los proxies del hosting.
+
+    Cada proxy AÑADE a la derecha de X-Forwarded-For la IP que le habla. Se recorre la
+    cadena de derecha a izquierda saltando las direcciones internas del hosting (alwaysdata
+    usa varias, p. ej. fd00::/8) y se toma la primera externa: esa la añadió un proxy propio.
+    Lo que el cliente escriba más a la izquierda se ignora, porque lo puede falsificar.
+    `trusted_hops` se conserva por compatibilidad con la configuración anterior.
+    """
+    chain = [p.strip() for p in request.headers.get("x-forwarded-for", "").split(",") if p.strip()]
+    if request.client and request.client.host:
+        chain.append(request.client.host)
+    for raw in reversed(chain):
         try:
-            return str(ipaddress.ip_address(candidate))
+            addr = ipaddress.ip_address(raw.strip("[]"))
         except ValueError:
-            pass
+            continue
+        if not _is_internal(addr):
+            return str(addr.ipv4_mapped or addr) if isinstance(addr, ipaddress.IPv6Address) else str(addr)
     return request.client.host if request.client else "unknown"
 
 

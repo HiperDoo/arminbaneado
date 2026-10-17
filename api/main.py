@@ -141,6 +141,13 @@ def create_app(settings: Settings | None = None, http_client: httpx.AsyncClient 
     async def health():
         return {"status": "ok"}
 
+    @app.get("/api/ip")
+    async def mi_ip(request: Request):
+        """Diagnóstico: un identificador corto y anónimo de cómo te ve la API.
+        Dos personas en conexiones distintas deben ver valores distintos."""
+        throttle(f"ipcheck:{ip_of(request)}", COUNTER_PER_MINUTE, 60, "Demasiadas consultas. Espera un momento.")
+        return JSONResponse({"id": antispam.anon(ip_of(request), settings.ip_salt)[:8]}, headers={"Cache-Control": "no-store"})
+
     @app.get("/api/contador")
     async def contador(request: Request):
         throttle(f"count:{ip_of(request)}", COUNTER_PER_MINUTE, 60, "Demasiadas consultas. Espera un momento.")

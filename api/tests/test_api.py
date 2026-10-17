@@ -280,3 +280,34 @@ def test_embed_json_has_live_count_and_valid_buttons(client):
     button = comp["components"][3]["components"][0]
     assert set(button) <= {"id", "type", "url", "style", "label", "emoji", "disabled"} and button["style"] == 5
     assert len(json.dumps(body, ensure_ascii=False).encode()) < 3000
+
+
+# ---------- IP real detrás de los proxies del hosting ----------
+
+def _ip_for(headers, client_host="::1"):
+    from types import SimpleNamespace
+    import antispam
+    req = SimpleNamespace(headers=headers, client=SimpleNamespace(host=client_host))
+    return antispam.client_ip(req)
+
+
+def test_client_ip_skips_internal_proxy_hops():
+    # alwaysdata: cliente -> proxy interno (fd00::) -> alproxy (::1)
+    assert _ip_for({"x-forwarded-for": "203.0.113.9, fd00::7:5f56"}) == "203.0.113.9"
+    assert _ip_for({"x-forwarded-for": "203.0.113.9, 10.0.0.5, 172.16.3.4"}) == "203.0.113.9"
+    assert _ip_for({"x-forwarded-for": "2001:db8::1"}) == "2001:db8::1"
+    assert _ip_for({"x-forwarded-for": "::ffff:198.51.100.4"}) == "198.51.100.4"
+
+
+def test_client_ip_ignores_spoofed_left_entries():
+    assert _ip_for({"x-forwarded-for": "9.9.9.9, 198.51.100.1, fd00::1"}) == "198.51.100.1"
+
+
+def test_client_ip_without_header_uses_socket():
+    assert _ip_for({}, client_host="198.51.100.7") == "198.51.100.7"
+
+
+def test_ip_endpoint_distinguishes_clients(client):
+    a = client.get("/api/ip", headers={"x-forwarded-for": "203.0.113.1, fd00::7:5f56"}).json()["id"]
+    b = client.get("/api/ip", headers={"x-forwarded-for": "203.0.113.2, fd00::7:5f56"}).json()["id"]
+    assert a != b and len(a) == 8
