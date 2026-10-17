@@ -67,7 +67,21 @@ class Settings:
         return self.turnstile_secret in TURNSTILE_TEST_SECRETS
 
 
+def _load_env_file(path: Path):
+    """Lee KEY=valor de un archivo .env junto al código (no se sube al repo).
+    Las variables que ya existan en el entorno tienen prioridad."""
+    if not path.is_file():
+        return
+    for line in path.read_text("utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+
+
 def load_settings() -> Settings:
+    _load_env_file(Path(__file__).parent / ".env")
     env = os.environ.get
     s = Settings(
         env=env("ENV", "prod"),
