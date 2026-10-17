@@ -1,0 +1,4 @@
+# GitHub Pages sirve la web desde la raíz; el código de la API no se publica.
+exclude:
+  - api
+  - README.md

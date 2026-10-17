@@ -1,0 +1,83 @@
+{
+  "_ayuda": "motivos = lista de tarjetas; cada tarjeta es una lista de mensajes (varios seguidos del mismo autor se agrupan). Campos: id (m1, m2... para las reacciones 🔥), author, color, avatar, role_icon, time, content. En content, {@Nombre} se pinta como mención. Para no exponer a nadie se usan avatares genéricos y 'Usuario eliminado' para terceros.",
+  "motivos": [
+    [
+      {
+        "author": "Armin 🍁",
+        "color": "#ABABFA",
+        "role_icon": "/img/role-moderador.png",
+        "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "time": "6/10/26, 19:08",
+        "content": "No tengo luz",
+        "id": "m1"
+      }
+    ],
+    [
+      {
+        "author": "Armin 🍁",
+        "color": "#ABABFA",
+        "role_icon": "/img/role-moderador.png",
+        "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "time": "7/3/26, 20:57",
+        "content": "{@Usuario eliminado} SI NO RESPONDES EN 3 SEGUNDOS ERES GAY",
+        "id": "m2"
+      }
+    ],
+    [
+      {
+        "author": "Armin 🍁",
+        "color": "#ABABFA",
+        "role_icon": "/img/role-moderador.png",
+        "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "time": "5:26 AM",
+        "content": "Estás esperando a una trans buena para darle mod y darle entre todo el staff\nPorque si es así",
+        "id": "m3"
+      },
+      {
+        "author": "Usuario eliminado",
+        "color": null,
+        "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
+        "time": "5:26 AM",
+        "content": "no tienen para hormonas tetas y nariz",
+        "id": "m4"
+      },
+      {
+        "author": "Armin 🍁",
+        "color": "#ABABFA",
+        "role_icon": "/img/role-moderador.png",
+        "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "time": "5:26 AM",
+        "content": "Banco",
+        "id": "m5"
+      }
+    ],
+    [
+      {
+        "author": "Usuario eliminado",
+        "color": null,
+        "avatar": "https://cdn.discordapp.com/embed/avatars/1.png",
+        "id": "m6",
+        "time": "6:13 PM",
+        "content": "Eres gay?"
+      },
+      {
+        "author": "Armin 🍁",
+        "color": "#ABABFA",
+        "role_icon": "/img/role-moderador.png",
+        "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "id": "m7",
+        "time": "6:13 PM",
+        "content": "si\nporke"
+      },
+      {
+        "author": "Armin 🍁",
+        "color": "#ABABFA",
+        "role_icon": "/img/role-moderador.png",
+        "avatar": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "id": "m8",
+        "time": "11:01 PM",
+        "content": "Mantengo la opinión de ese día"
+      }
+    ]
+  ]
+}

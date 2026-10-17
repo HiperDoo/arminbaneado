@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="noindex">
+    <title>Página no encontrada · Caso Armin</title>
+    <meta name="theme-color" content="#FD0303">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" href="/assets/discord.css">
+    <link rel="stylesheet" href="/assets/page.css">
+    <style>
+        .nf { position: relative; isolation: isolate; min-height: calc(100dvh - 64px); display: grid; place-items: center; padding: 48px 0 72px; }
+        .nf-inner { display: grid; justify-items: center; gap: 28px; width: min(560px, 100% - 32px); text-align: center; }
+        .nf-code {
+            position: relative; font-size: clamp(120px, 28vw, 200px); font-weight: 800; line-height: 0.9; letter-spacing: -0.06em;
+            color: transparent; -webkit-text-stroke: 2px rgba(239, 239, 241, 0.16);
+            user-select: none;
+        }
+        .nf-code-fill {
+            position: absolute; inset: 0; color: var(--text-header); -webkit-text-stroke: 0;
+            clip-path: inset(0 0 52% 0);
+        }
+        .nf-stamp {
+            position: absolute; left: 50%; top: 48%; translate: -50% -50%; rotate: -10deg;
+            padding: 6px 14px; border: 3px solid #FD0303; border-radius: 10px;
+            color: #FD0303; font-size: clamp(18px, 4vw, 26px); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+            background: rgba(26, 26, 30, 0.85); white-space: nowrap;
+        }
+        .nf-title { color: var(--text-header); font-size: clamp(26px, 1.2rem + 1.6vw, 36px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; text-wrap: balance; }
+        .nf-sub { margin-top: 10px; font-size: 17px; line-height: 1.5; color: var(--text-muted); text-wrap: pretty; }
+        .nf-msg { width: 100%; text-align: left; border-radius: 8px; }
+        .nf-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+        @media (prefers-reduced-motion: no-preference) {
+            .nf-stamp { animation: stamp 520ms cubic-bezier(0.23, 1, 0.32, 1) 250ms both; }
+            @keyframes stamp { from { opacity: 0; scale: 1.6; } to { opacity: 1; scale: 1; } }
+            .nf-inner > * { animation: rise 600ms var(--ease-out) both; }
+            .nf-inner > :nth-child(2) { animation-delay: 80ms; }
+            .nf-inner > :nth-child(3) { animation-delay: 140ms; }
+            .nf-inner > :nth-child(4) { animation-delay: 200ms; }
+            @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+        }
+        @media (max-width: 760px) { .nf-actions .d-btn { flex: 1 1 100%; } }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="/" aria-label="Caso Armin, inicio">
+                <span class="brand-mark" aria-hidden="true"><i class="ph-fill ph-gavel"></i></span>
+                <span>Caso Armin</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="nf">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="nf-inner">
+            <div class="nf-code" aria-hidden="true">404<span class="nf-code-fill">404</span><span class="nf-stamp">Baneada</span></div>
+
+            <div>
+                <h1 class="nf-title">Esta página fue baneada antes que Armin</h1>
+                <p class="nf-sub">El enlace no existe o lo escribiste mal. La petición sigue abierta en la página principal.</p>
+            </div>
+
+            <article class="d-msg d-msg--ephemeral d-msg--reply nf-msg" aria-label="Mensaje del sistema">
+                <p class="d-msg-ref">
+                    <img src="https://cdn.discordapp.com/embed/avatars/3.png" alt="" width="16" height="16">
+                    <span class="d-msg-ref-user">visitante</span>
+                    <span>ha utilizado</span>
+                    <span class="d-cmd"><i class="ph-fill ph-squares-four" aria-hidden="true"></i>buscar-pagina</span>
+                </p>
+                <span class="d-msg-avatar bot-avatar" aria-hidden="true" style="display:grid;place-items:center;background:var(--danger);color:#fff;font-size:22px"><i class="ph-fill ph-gavel"></i></span>
+                <p class="d-msg-head">
+                    <span class="d-msg-author">Caso Armin</span>
+                    <span class="d-tag"><i class="ph-bold ph-check" aria-hidden="true"></i>APP</span>
+                </p>
+                <div class="d-msg-body"><p>❌ No encontré esa página. Prueba con la principal.</p></div>
+                <p class="d-ephemeral-foot"><i class="ph ph-eye" aria-hidden="true"></i><span>Solo tú puedes verlo</span></p>
+            </article>
+
+            <div class="nf-actions">
+                <a class="d-btn d-btn--primary d-btn--xl" href="/"><i class="ph-bold ph-arrow-left" aria-hidden="true"></i>Volver a la petición</a>
+                <a class="d-btn d-btn--secondary d-btn--xl" href="/#motivos">Ver motivos</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

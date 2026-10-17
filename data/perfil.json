@@ -1,0 +1,25 @@
+{
+  "display_name": "Armin 🍁",
+  "username": "armin",
+  "avatar_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+  "avatar_decoration_url": null,
+  "banner_url": null,
+  "banner_color": "#000000",
+  "roles": [
+    {
+      "name": "MODERADOR",
+      "color": "#ABABFA",
+      "icon": "/img/role-moderador.png"
+    },
+    {
+      "name": "BØØSTER",
+      "color": "#EE6CE9",
+      "icon": "/img/role-booster.png"
+    },
+    {
+      "name": "REGULAR 《⭐3》",
+      "color": "#FFFFFF",
+      "icon": "/img/role-regular.png"
+    }
+  ]
+}

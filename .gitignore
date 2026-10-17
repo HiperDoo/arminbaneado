@@ -1,6 +1,9 @@
-config.json
 __pycache__/
 *.pyc
+.pytest_cache/
+.venv/
 .env
-host/firmas.json
-host/assets/
+*.db
+*.db-wal
+*.db-shm
+api/data/
